@@ -20,6 +20,9 @@ public class EnterPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_password);
 
+        //Code for Hide appBar
+        if (getSupportActionBar() != null) {getSupportActionBar().hide();}
+
         tilEnterPassword = findViewById(R.id.tilEnterPassword);
         tilEnterConPassword = findViewById(R.id.tilEnterConPassword);
         btnEnterPassSubmit = findViewById(R.id.btnEnterPassSubmit);

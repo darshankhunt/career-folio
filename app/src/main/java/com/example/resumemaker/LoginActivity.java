@@ -28,6 +28,10 @@ public class LoginActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
 
         imgLoginGif = findViewById(R.id.imgLoginGif);
         tilEmail = findViewById(R.id.tilLoginEmail);
