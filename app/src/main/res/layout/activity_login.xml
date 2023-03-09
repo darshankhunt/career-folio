@@ -19,6 +19,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/background">
@@ -55,6 +56,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgLoginGif" />
 
+<!--            style="@style/Widget.Design.TextInputLayout"-->
+<!--            android:theme="@style/EditTextThemeOverlay"-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilLoginEmail"
                 android:layout_width="match_parent"
@@ -63,7 +66,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Email"
-                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundColor="@color/background"
                 app:boxBackgroundMode="outline"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/purple_500"
