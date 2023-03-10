@@ -80,9 +80,9 @@
                 android:id="@+id/tilLastName"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
                 android:hint="Last Name"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
@@ -100,6 +100,31 @@
                     android:padding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProfession"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:hint="Profession"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/purple_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilLastName"
+                app:placeholderText="ex: Software Developer">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="textCapWords"
+                    android:padding="5dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
@@ -112,7 +137,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilLastName" />
+                app:layout_constraintTop_toBottomOf="@+id/tilProfession" />
 
             <Button
                 android:id="@+id/btnNext"
