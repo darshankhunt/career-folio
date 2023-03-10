@@ -34,7 +34,6 @@ public class CreateResumeDataActivity extends AppCompatActivity implements TabLa
         tabLayout.addTab(tabLayout.newTab().setText("Summary").setIcon(R.drawable.ic_tab_summary));
         tabLayout.addTab(tabLayout.newTab().setText("Done").setIcon(R.drawable.ic_tab_done));
 
-
         tabLayout.addOnTabSelectedListener(CreateResumeDataActivity.this);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
