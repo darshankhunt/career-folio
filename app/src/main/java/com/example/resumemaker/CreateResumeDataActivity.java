@@ -6,7 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
-import com.example.resumemaker.adapter.MyPagerAdapter;
+import com.example.resumemaker.adapter.ResumeDetailsAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class CreateResumeDataActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
@@ -23,12 +23,17 @@ public class CreateResumeDataActivity extends AppCompatActivity implements TabLa
         viewPager2 = findViewById(R.id.viewPager);
 
         FragmentManager manager = getSupportFragmentManager();
-        MyPagerAdapter adapter = new MyPagerAdapter(manager,getLifecycle());
+        ResumeDetailsAdapter adapter = new ResumeDetailsAdapter(manager,getLifecycle());
         viewPager2.setAdapter(adapter);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Home"));
-        tabLayout.addTab(tabLayout.newTab().setText("Second"));
-        tabLayout.addTab(tabLayout.newTab().setText("Third"));
+        tabLayout.addTab(tabLayout.newTab().setText("About").setIcon(R.drawable.ic_tab_about));
+        tabLayout.addTab(tabLayout.newTab().setText("Contact").setIcon(R.drawable.ic_tab_contact));
+        tabLayout.addTab(tabLayout.newTab().setText("Work").setIcon(R.drawable.ic_tab_work));
+        tabLayout.addTab(tabLayout.newTab().setText("Education").setIcon(R.drawable.ic_tab_education));
+        tabLayout.addTab(tabLayout.newTab().setText("Skills").setIcon(R.drawable.ic_tab_skills));
+        tabLayout.addTab(tabLayout.newTab().setText("Summary").setIcon(R.drawable.ic_tab_summary));
+        tabLayout.addTab(tabLayout.newTab().setText("Done").setIcon(R.drawable.ic_tab_done));
+
 
         tabLayout.addOnTabSelectedListener(CreateResumeDataActivity.this);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

@@ -17,7 +17,5 @@
 
    <style name="EditTextThemeOverlay" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">#AE2B2B</item>
-
-
     </style>
 </resources>

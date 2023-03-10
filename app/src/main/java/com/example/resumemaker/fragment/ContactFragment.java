@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.R;
 
-public class SecondFragment extends Fragment {
+public class ContactFragment extends Fragment {
 
 
 
-    public SecondFragment() {
+    public ContactFragment() {
         // Required empty public constructor
     }
 
@@ -21,7 +21,7 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_second, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact, container, false);
         return view;
     }
 }

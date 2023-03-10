@@ -6,13 +6,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.resumemaker.fragment.HomeFragment;
-import com.example.resumemaker.fragment.SecondFragment;
+import com.example.resumemaker.fragment.AboutFragment;
+import com.example.resumemaker.fragment.ContactFragment;
 import com.example.resumemaker.fragment.ThirdFragment;
 
-public class MyPagerAdapter extends FragmentStateAdapter {
+public class ResumeDetailsAdapter extends FragmentStateAdapter {
 
-    public MyPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public ResumeDetailsAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 
@@ -22,17 +22,17 @@ public class MyPagerAdapter extends FragmentStateAdapter {
 
         switch (position){
             case 1:
-                return  new SecondFragment();
+                return  new ContactFragment();
             case 2:
                 return  new ThirdFragment();
         }
 
 
-        return new HomeFragment();
+        return new AboutFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 6;
     }
 }
