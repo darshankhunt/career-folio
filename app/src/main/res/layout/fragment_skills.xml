@@ -86,14 +86,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="10dp"
                     app:cardMaxElevation="12dp"
                     app:cardPreventCornerOverlap="true"
                     app:cardUseCompatPadding="true"
-                    tools:visibility="visible">
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -126,8 +126,7 @@
                             android:id="@+id/rgSkill0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            >
+                            android:layout_marginLeft="10dp">
 
                             <RadioButton
                                 android:id="@+id/rBeginner0"
@@ -190,6 +189,334 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/SkillCard1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp"
+                    app:cardMaxElevation="12dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    tools:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tillSkillName1"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:hint="Skill"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/purple_500"
+                            app:placeholderText="Python">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="text"
+                                android:padding="5dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <RadioGroup
+                            android:id="@+id/rgSkill1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp">
+
+                            <RadioButton
+                                android:id="@+id/rBeginner1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Beginner"
+                                android:textSize="20dp" />
+
+
+                            <RadioButton
+                                android:id="@+id/rIntermediate1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="true"
+                                android:text="Intermediate"
+                                android:textSize="20dp" />
+
+                            <RadioButton
+                                android:id="@+id/rAdvanced1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Advanced"
+                                android:textSize="20dp" />
+
+                            <RadioButton
+                                android:id="@+id/rExpert1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Expert"
+                                android:textSize="20dp" />
+                        </RadioGroup>
+
+                        <Button
+                            android:id="@+id/btnRemoveCard1"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/button_design"
+                            android:text="Remove Skill"
+                            android:textColor="@color/white"
+                            app:cornerRadius="30dp"
+                            app:icon="@drawable/ic_trash"
+                            app:iconTint="@color/white" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/SkillCard2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp"
+                    app:cardMaxElevation="12dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    tools:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tillSkillName2"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:hint="Skill"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/purple_500"
+                            app:placeholderText="Python">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="text"
+                                android:padding="5dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <RadioGroup
+                            android:id="@+id/rgSkill2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp">
+
+                            <RadioButton
+                                android:id="@+id/rBeginner2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Beginner"
+                                android:textSize="20dp" />
+
+
+                            <RadioButton
+                                android:id="@+id/rIntermediate2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="true"
+                                android:text="Intermediate"
+                                android:textSize="20dp" />
+
+                            <RadioButton
+                                android:id="@+id/rAdvanced2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Advanced"
+                                android:textSize="20dp" />
+
+                            <RadioButton
+                                android:id="@+id/rExpert2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Expert"
+                                android:textSize="20dp" />
+                        </RadioGroup>
+
+                        <Button
+                            android:id="@+id/btnRemoveCard2"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/button_design"
+                            android:text="Remove Skill"
+                            android:textColor="@color/white"
+                            app:cornerRadius="30dp"
+                            app:icon="@drawable/ic_trash"
+                            app:iconTint="@color/white" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/SkillCard3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp"
+                    app:cardMaxElevation="12dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    tools:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tillSkillName3"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:hint="Skill"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/purple_500"
+                            app:placeholderText="Python">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="text"
+                                android:padding="5dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <RadioGroup
+                            android:id="@+id/rgSkill3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp">
+
+                            <RadioButton
+                                android:id="@+id/rBeginner3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Beginner"
+                                android:textSize="20dp" />
+
+
+                            <RadioButton
+                                android:id="@+id/rIntermediate3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="true"
+                                android:text="Intermediate"
+                                android:textSize="20dp" />
+
+                            <RadioButton
+                                android:id="@+id/rAdvanced3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Advanced"
+                                android:textSize="20dp" />
+
+                            <RadioButton
+                                android:id="@+id/rExpert3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="Expert"
+                                android:textSize="20dp" />
+                        </RadioGroup>
+
+                        <Button
+                            android:id="@+id/btnRemoveCard3"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/button_design"
+                            android:text="Remove Skill"
+                            android:textColor="@color/white"
+                            app:cornerRadius="30dp"
+                            app:icon="@drawable/ic_trash"
+                            app:iconTint="@color/white" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
 
             </LinearLayout>
 
