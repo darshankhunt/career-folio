@@ -19,17 +19,17 @@ import com.example.resumemaker.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class WorkFragment extends Fragment {
-
-
-
     public WorkFragment() {
         // Required empty public constructor
     }
+
     EditText startDate0;
     private LinearLayout lLayoutCard;
     private int count = 0;
-    Button btnAddExp;
+    private Button btnAddExp;
     private CardView workCard0, workCard1, workCard2;
+
+    Button btnRemoveCard0,btnRemoveCard1,btnRemoveCard2;
     private EditText edStartDate0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +42,9 @@ public class WorkFragment extends Fragment {
         workCard0 = view.findViewById(R.id.WorkCard0);
         workCard1 = view.findViewById(R.id.WorkCard1);
         workCard2 = view.findViewById(R.id.WorkCard2);
+        btnRemoveCard0 = view.findViewById(R.id.btnRemoveCard0);
+        btnRemoveCard1 = view.findViewById(R.id.btnRemoveCard1);
+        btnRemoveCard2 = view.findViewById(R.id.btnRemoveCard2);
 //        lLayoutCard.setVisibility(View.VISIBLE);
         edStartDate0 = view.findViewById(R.id.edStartDate0);
 
@@ -68,6 +71,8 @@ public class WorkFragment extends Fragment {
 //            }
 //        });
 
+
+        //Add Exp Btn Click
         btnAddExp.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -87,6 +92,29 @@ public class WorkFragment extends Fragment {
                 }
             }
         });
+
+        btnRemoveCard0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                workCard0.setVisibility(View.GONE);
+            }
+        });
+        btnRemoveCard1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                workCard1.setVisibility(View.GONE);
+            }
+        });
+        btnRemoveCard2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                workCard2.setVisibility(View.GONE);
+            }
+        });
+
 
 
         return view;
