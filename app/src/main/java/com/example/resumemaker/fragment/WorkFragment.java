@@ -44,6 +44,7 @@ public class WorkFragment extends Fragment {
         lLayoutCard.setVisibility(View.VISIBLE);
 
         btnAddExp.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
