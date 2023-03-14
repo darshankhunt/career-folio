@@ -36,7 +36,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
 
-
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
@@ -50,7 +49,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/textView18"
@@ -69,6 +69,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
+                android:id="@+id/lLayoutCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -76,22 +77,26 @@
                 android:layout_marginEnd="1dp"
                 android:layout_marginBottom="1dp"
                 android:orientation="vertical"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnAddExp">
+                app:layout_constraintTop_toBottomOf="@+id/btnAddExp"
+                tools:visibility="visible">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/WorkCard0"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="10dp"
                     app:cardMaxElevation="12dp"
                     app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true">
+                    app:cardUseCompatPadding="true"
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -224,12 +229,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="10dp"
                     app:cardMaxElevation="12dp"
                     app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true">
+                    app:cardUseCompatPadding="true"
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -362,12 +369,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="10dp"
                     app:cardMaxElevation="12dp"
                     app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true">
+                    app:cardUseCompatPadding="true"
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
