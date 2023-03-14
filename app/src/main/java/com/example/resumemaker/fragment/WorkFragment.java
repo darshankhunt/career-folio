@@ -30,6 +30,7 @@ public class WorkFragment extends Fragment {
     private int count = 0;
     Button btnAddExp;
     private CardView workCard0, workCard1, workCard2;
+    private EditText edStartDate0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,7 +42,31 @@ public class WorkFragment extends Fragment {
         workCard0 = view.findViewById(R.id.WorkCard0);
         workCard1 = view.findViewById(R.id.WorkCard1);
         workCard2 = view.findViewById(R.id.WorkCard2);
-        lLayoutCard.setVisibility(View.VISIBLE);
+//        lLayoutCard.setVisibility(View.VISIBLE);
+        edStartDate0 = view.findViewById(R.id.edStartDate0);
+
+
+//        edStartDate0.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                String str=edStartDate0.getText().toString();
+//                int textLength=edStartDate0 .getText().length();
+//                if (textLength == 3) {
+//                    if (!str.contains("-")) {
+//                        edStartDate0 .setText(new StringBuilder(edStartDate0 .getText().toString()).insert(str.length() - 1, "/").toString());
+//                        edStartDate0 .setSelection(edStartDate0 .getText().length());
+//                    }
+//                }
+//            }
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
         btnAddExp.setOnClickListener(new View.OnClickListener() {
 
@@ -65,6 +90,31 @@ public class WorkFragment extends Fragment {
 
 
         return view;
+    }
+
+
+    public void addSlash(){
+        edStartDate0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String str=edStartDate0.getText().toString();
+                int textLength=edStartDate0 .getText().length();
+                if (textLength == 3) {
+                    if (!str.contains("-")) {
+                        edStartDate0 .setText(new StringBuilder(edStartDate0 .getText().toString()).insert(str.length() - 1, "/").toString());
+                        edStartDate0 .setSelection(edStartDate0 .getText().length());
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
 

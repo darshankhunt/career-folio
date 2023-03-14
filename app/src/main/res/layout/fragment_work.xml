@@ -166,11 +166,12 @@
                                 app:placeholderText="03-2021">
 
                                 <com.google.android.material.textfield.TextInputEditText
+
                                     android:id="@+id/edStartDate0"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="6"
+                                    android:maxLength="7"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -190,10 +191,11 @@
                                 app:placeholderText="04-2022">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edEndDate0"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="6"
+                                    android:maxLength="7"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -310,7 +312,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="6"
+                                    android:maxLength="7"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -330,10 +332,11 @@
                                 app:placeholderText="04-2022">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edEndDate1"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="6"
+                                    android:maxLength="7"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -450,7 +453,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="6"
+                                    android:maxLength="7"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -470,10 +473,11 @@
                                 app:placeholderText="04-2022">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edEndDate2"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="6"
+                                    android:maxLength="7"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
