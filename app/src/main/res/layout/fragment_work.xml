@@ -8,6 +8,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnAddExp"
@@ -75,7 +76,7 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="70dp"
                 android:orientation="vertical"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -118,6 +119,7 @@
                             app:placeholderText="EduTech Software Solutions">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edCompanyName0"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -139,6 +141,7 @@
                             app:placeholderText="Junior Software Engineer">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edJobTitle0"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -216,6 +219,7 @@
                             app:placeholderText="Sample Job description">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edWorkDesc0"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="textMultiLine"
@@ -276,6 +280,7 @@
                             app:placeholderText="EduTech Software Solutions">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edCompanyName1"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -297,6 +302,7 @@
                             app:placeholderText="Junior Software Engineer">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edJobTitle1"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -373,6 +379,7 @@
                             app:placeholderText="Sample Job description">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edWorkDesc1"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="textMultiLine"
@@ -434,6 +441,7 @@
                             app:placeholderText="EduTech Software Solutions">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edCompanyName2"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -455,6 +463,7 @@
                             app:placeholderText="Junior Software Engineer">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edJobTitle2"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -531,6 +540,7 @@
                             app:placeholderText="Sample Job description">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edWorkDesc2"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="textMultiLine"
@@ -564,6 +574,22 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
+    <Button
+        android:id="@+id/btnWorkSave"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_design"
+        android:text="Save &amp; Next"
+        android:textColor="@color/white"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

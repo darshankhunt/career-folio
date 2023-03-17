@@ -8,51 +8,57 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.R;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class WorkFragment extends Fragment implements View.OnClickListener {
     public WorkFragment() {
         // Required empty public constructor
     }
 
-
-    private LinearLayout lLayoutCard;
     private static int count = 0;
-    private Button btnAddExp;
     private CardView workCard0, workCard1, workCard2;
+    private Button btnAddExp, btnWorkSave, btnRemoveCard0,btnRemoveCard1,btnRemoveCard2;
+    private EditText edCompanyName0,edCompanyName1,edCompanyName2,edJobTitle0,edJobTitle1,
+            edJobTitle2, edStartDate0,edStartDate1,edStartDate2,edEndDate0, edEndDate1, edEndDate2,
+            edWorkDesc0,edWorkDesc1,edWorkDesc2;
 
-    Button btnRemoveCard0,btnRemoveCard1,btnRemoveCard2;
-    private EditText edStartDate0,edStartDate1,edStartDate2,edEndDate0, edEndDate1, edEndDate2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_work, container, false);
 
         btnAddExp = view.findViewById(R.id.btnAddExp);
-        lLayoutCard = view.findViewById(R.id.lLayoutCard);
+        btnWorkSave = view.findViewById(R.id.btnWorkSave);
+//      All three Cards
         workCard0 = view.findViewById(R.id.WorkCard0);
         workCard1 = view.findViewById(R.id.WorkCard1);
         workCard2 = view.findViewById(R.id.WorkCard2);
-        btnRemoveCard0 = view.findViewById(R.id.btnRemoveCard0);
-        btnRemoveCard1 = view.findViewById(R.id.btnRemoveCard1);
-        btnRemoveCard2 = view.findViewById(R.id.btnRemoveCard2);
-//        lLayoutCard.setVisibility(View.VISIBLE);
+        edCompanyName0 = view.findViewById(R.id.edCompanyName0);
+        edCompanyName1 = view.findViewById(R.id.edCompanyName1);
+        edCompanyName2 = view.findViewById(R.id.edCompanyName2);
+        edJobTitle0 = view.findViewById(R.id.edJobTitle0);
+        edJobTitle1 = view.findViewById(R.id.edJobTitle1);
+        edJobTitle2 = view.findViewById(R.id.edJobTitle2);
         edStartDate0 = view.findViewById(R.id.edStartDate0);
         edStartDate1 = view.findViewById(R.id.edStartDate1);
         edStartDate2 = view.findViewById(R.id.edStartDate2);
         edEndDate0 = view.findViewById(R.id.edEndDate0);
         edEndDate1 = view.findViewById(R.id.edEndDate1);
         edEndDate2 = view.findViewById(R.id.edEndDate2);
+        edWorkDesc0 = view.findViewById(R.id.edWorkDesc0);
+        edWorkDesc1 = view.findViewById(R.id.edWorkDesc1);
+        edWorkDesc2 = view.findViewById(R.id.edWorkDesc2);
+        btnRemoveCard0 = view.findViewById(R.id.btnRemoveCard0);
+        btnRemoveCard1 = view.findViewById(R.id.btnRemoveCard1);
+        btnRemoveCard2 = view.findViewById(R.id.btnRemoveCard2);
 
+
+//        lLayoutCard.setVisibility(View.VISIBLE);
         addSlash(edStartDate0);
         addSlash(edStartDate1);
         addSlash(edStartDate2);
@@ -69,11 +75,22 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
         btnRemoveCard1.setOnClickListener(this);
         btnRemoveCard2.setOnClickListener(this);
 
+        btnWorkSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+
+
+            }
+        });
 
 
 
         return view;
     }
+
 
 
 
