@@ -26,6 +26,7 @@ public class ResumeDetailsAdapter extends FragmentStateAdapter {
 
         switch (position){
             case 1:
+
                 return  new ContactFragment();
             case 2:
                 return  new WorkFragment();

@@ -3,11 +3,13 @@ package com.example.resumemaker.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.resumemaker.R;
@@ -15,11 +17,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class AboutFragment extends Fragment {
-    public AboutFragment() {
-        // Required empty public constructor
-    }
-
-    private TextInputLayout tilFirstName, tilLastName, tilProfession;
+//    public AboutFragment() {
+//        // Required empty public constructor
+//    }
+    private EditText edFname, edLname, edProfession;
     private Button btnNext;
 
     @Override
@@ -30,9 +31,9 @@ public class AboutFragment extends Fragment {
 
 
         btnNext = view.findViewById(R.id.btnNext);
-        tilFirstName = view.findViewById(R.id.tilFirstName);
-        tilLastName = view.findViewById(R.id.tilLastName);
-        tilProfession = view.findViewById(R.id.tilProfession);
+        edFname = view.findViewById(R.id.edFname);
+        edLname = view.findViewById(R.id.edLastName);
+        edProfession = view.findViewById(R.id.edProfession);
 
 
 
@@ -40,34 +41,23 @@ public class AboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String FirstName = tilFirstName.getEditText().getText().toString().trim();
-                String LastName = tilLastName.getEditText().getText().toString().trim();
-                String Profession = tilProfession.getEditText().getText().toString().trim();
+                String FirstName = edFname.getText().toString().trim();
+                String LastName = edLname.getText().toString().trim();
+                String Profession = edProfession.getText().toString().trim();
 
                 if(FirstName.equals("")){
-                    tilFirstName.setError("Please Enter FirstName");
+                    edFname.setError("Please Enter FirstName");
                 } else if (LastName.equals("")) {
-                    tilFirstName.setError("Please Enter LastName");
+                    edLname.setError("Please Enter LastName");
                 } else if (Profession.equals("")) {
-                    tilProfession.setError("Please Enter Profession");
+                    edProfession.setError("Please Enter Profession");
                 }else {
+//                    DataBase Code
                     Toast.makeText(getActivity(), ""+FirstName+"|"+LastName+"|"+Profession, Toast.LENGTH_SHORT).show();
-                }
 
-//                if(!FirstName.equals("") && !LastName.equals("") && !Profession.equals("")){
-////                    String FirstName = tilFirstName.getEditText().getText().toString().trim();
-////                    String LastName = tilLastName.getEditText().getText().toString().trim();
-////                    String Profession = tilProfession.getEditText().getText().toString().trim();
-//
-//                    Toast.makeText(getActivity(), ""+FirstName+"|"+LastName+"|"+Profession, Toast.LENGTH_SHORT).show();
-//                }else {
-//                    Toast.makeText(getActivity(), "Hello World", Toast.LENGTH_SHORT).show();
-//                }
+                }
             }
         });
-
-
-
 
         return view;
     }

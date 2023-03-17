@@ -86,6 +86,7 @@
                 app:placeholderText="ex: John">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edFname"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="textCapWords"
@@ -110,6 +111,7 @@
                 app:placeholderText="ex: Doe">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edLastName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="textCapWords"
@@ -134,6 +136,7 @@
                 app:placeholderText="ex: Software Developer">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edProfession"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="textCapWords"
@@ -153,7 +156,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_design"
-        android:text="Next"
+        android:text="Save &amp; Next"
         android:textColor="@color/white"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
