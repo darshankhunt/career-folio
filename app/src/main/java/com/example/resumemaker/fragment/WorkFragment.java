@@ -181,7 +181,9 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                         }
 
                     }
-                } else if(workCard1.getVisibility() == View.VISIBLE){
+                }
+
+                if(workCard1.getVisibility() == View.VISIBLE){
                     String companyName1 = edCompanyName1.getText().toString().trim();
                     String jobTitle1 = edJobTitle1.getText().toString().trim();
                     String startDate1 = edStartDate1.getText().toString().trim();
@@ -218,7 +220,9 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                             Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                         }
                     }
-                } else if(workCard2.getVisibility() == View.VISIBLE){
+                }
+
+                if(workCard2.getVisibility() == View.VISIBLE){
                     String companyName2 = edCompanyName2.getText().toString().trim();
                     String jobTitle2 = edJobTitle2.getText().toString().trim();
                     String startDate2 = edStartDate2.getText().toString().trim();
