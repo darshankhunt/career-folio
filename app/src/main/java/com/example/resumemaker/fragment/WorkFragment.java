@@ -23,7 +23,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class WorkFragment extends Fragment implements View.OnClickListener {
 
@@ -157,8 +160,26 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                     } else if (workDesc0.isEmpty()) {
                         edWorkDesc0.setError("please enter work description");
                     }else{
-//                        Data saved
-                        Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                        if(!endDate0.equals("Present")){
+                            try{
+                                SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
+                                Date dStartDate0 = formatter.parse(startDate0);
+                                Date dEndDate0 = formatter.parse(endDate0);
+                                if (dEndDate0.compareTo(dStartDate0)<0)
+                                {
+                                    Toast.makeText(getActivity(), "Start date is not bigger than End date", Toast.LENGTH_SHORT).show();
+                                }else {
+//                                    Code of DataBase
+                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (ParseException e1){
+                                e1.printStackTrace();
+                            }
+                        }else {
+//                            Code of DataBase
+                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 } else if(workCard1.getVisibility() == View.VISIBLE){
                     String companyName1 = edCompanyName1.getText().toString().trim();
@@ -177,8 +198,25 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                     } else if (workDesc1.isEmpty()) {
                         edWorkDesc1.setError("please enter work description");
                     }else{
-//                        Data saved
-                        Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                        if(!endDate1.equals("Present")){
+                            try{
+                                SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
+                                Date dStartDate1 = formatter.parse(startDate1);
+                                Date dEndDate1 = formatter.parse(endDate1);
+                                if (dEndDate1.compareTo(dStartDate1)<0)
+                                {
+                                    Toast.makeText(getActivity(), "Start date is not bigger than End date", Toast.LENGTH_SHORT).show();
+                                }else {
+//                                    Code of DataBase
+                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (ParseException e1){
+                                e1.printStackTrace();
+                            }
+                        }else {
+//                            Code of DataBase
+                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else if(workCard2.getVisibility() == View.VISIBLE){
                     String companyName2 = edCompanyName2.getText().toString().trim();
@@ -197,8 +235,25 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                     } else if (workDesc2.isEmpty()) {
                         edWorkDesc2.setError("please enter work description");
                     }else{
-//                        Data saved
-                        Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                        if(!endDate2.equals("Present")){
+                            try{
+                                SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
+                                Date dStartDate2 = formatter.parse(startDate2);
+                                Date dEndDate2 = formatter.parse(endDate2);
+                                if (dEndDate2.compareTo(dStartDate2)<0)
+                                {
+                                    Toast.makeText(getActivity(), "Start date is not bigger than End date", Toast.LENGTH_SHORT).show();
+                                }else {
+//                                    Code of DataBase
+                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (ParseException e1){
+                                e1.printStackTrace();
+                            }
+                        }else {
+//                            Code of DataBase
+                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
@@ -310,7 +365,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                                   int year,
                                                   int monthOfYear,
                                                   int dayOfMonth) {
-                                StartDate.setText((monthOfYear + 1) + "-" + year);
+                                StartDate.setText((monthOfYear + 1) + "/" + year);
                             }
                         }, year, month, date);
         ((ViewGroup)datePickerDialog.getDatePicker())
