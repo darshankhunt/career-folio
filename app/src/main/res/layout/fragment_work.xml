@@ -36,7 +36,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
@@ -153,14 +152,23 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <ImageButton
+                                android:id="@+id/btnStartDate0"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginTop="20dp"
+                                android:backgroundTint="@color/white"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
+
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilStartDate0"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="Start Date"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
@@ -178,6 +186,16 @@
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
+                            <ImageButton
+                                android:id="@+id/btnEndDate0"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:backgroundTint="@color/white"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
+
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilEndDate0"
                                 android:layout_width="match_parent"
@@ -186,6 +204,7 @@
                                 android:layout_marginTop="20dp"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="End Date"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
@@ -203,12 +222,26 @@
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/chbPresentWorking0"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="I am currently working in this role"></CheckBox>
+                        </LinearLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilWorkDesc0"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="20dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="20dp"
                             android:hint="Description"
@@ -314,14 +347,23 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <ImageButton
+                                android:id="@+id/btnStartDate1"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilStartDate1"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="Start Date"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
@@ -330,6 +372,7 @@
                                 app:placeholderText="03-2021">
 
                                 <com.google.android.material.textfield.TextInputEditText
+
                                     android:id="@+id/edStartDate1"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
@@ -338,12 +381,24 @@
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
+                            <ImageButton
+                                android:id="@+id/btnEndDate1"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
+
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilEndDate1"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
+                                android:enabled="false"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
                                 android:hint="End Date"
@@ -363,12 +418,26 @@
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/chbPresentWorking1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:buttonTint="@color/purple_500"
+                                android:layout_marginLeft="10dp"
+                                android:checked="false"
+                                android:text="I am currently working in this role"></CheckBox>
+                        </LinearLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilWorkDesc1"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="20dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="20dp"
                             android:hint="Description"
@@ -475,14 +544,23 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <ImageButton
+                                android:id="@+id/btnStartDate2"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilStartDate2"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="Start Date"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
@@ -491,6 +569,7 @@
                                 app:placeholderText="03-2021">
 
                                 <com.google.android.material.textfield.TextInputEditText
+
                                     android:id="@+id/edStartDate2"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
@@ -499,12 +578,24 @@
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
+                            <ImageButton
+                                android:id="@+id/btnEndDate2"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
+
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilEndDate2"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
+                                android:enabled="false"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
                                 android:hint="End Date"
@@ -524,12 +615,26 @@
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/chbPresentWorking2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:buttonTint="@color/purple_500"
+                                android:layout_marginLeft="10dp"
+                                android:checked="false"
+                                android:text="I am currently working in this role"></CheckBox>
+                        </LinearLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilWorkDesc2"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="20dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="20dp"
                             android:hint="Description"
@@ -569,7 +674,6 @@
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

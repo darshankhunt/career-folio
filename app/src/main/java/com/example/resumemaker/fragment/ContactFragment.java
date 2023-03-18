@@ -52,7 +52,7 @@ public class ContactFragment extends Fragment {
                 } else if (MoNO.equals("")) {
                     edMoNo.setError("Please Enter Mobile Number");
                 } else if (Website.equals("")){
-                    edWebsite.setError("Please Enter any website");
+//                    edWebsite.setError("Please Enter any website");
                 } else if (Country.equals("")) {
                     edCountry.setError("Please Enter your city or country");
                 }else {
