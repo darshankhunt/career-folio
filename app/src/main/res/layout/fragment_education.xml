@@ -121,6 +121,7 @@
                             app:placeholderText="BSc.IT">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edCourseName0"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -142,6 +143,7 @@
                             app:placeholderText="Gujarat University">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edSclName0"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -163,6 +165,7 @@
                             app:placeholderText="8.6 CGPA">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edGrade0"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -174,24 +177,33 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <ImageButton
+                                android:id="@+id/btnStartDate0"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginTop="20dp"
+                                android:backgroundTint="@color/white"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
+
                             <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/tilStartYear0"
+                                android:id="@+id/tilStartDate0"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="Start Year"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
                                 app:endIconMode="clear_text"
                                 app:endIconTint="@color/purple_500"
-                                app:placeholderText="2020">
+                                app:placeholderText="2021">
 
                                 <com.google.android.material.textfield.TextInputEditText
 
-                                    android:id="@+id/edStartYear0"
+                                    android:id="@+id/edStartDate0"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
@@ -199,14 +211,25 @@
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
+                            <ImageButton
+                                android:id="@+id/btnEndDate0"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:backgroundTint="@color/white"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
+
                             <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/tilEndYear0"
+                                android:id="@+id/tilEndDate0"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="End Year"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
@@ -215,7 +238,7 @@
                                 app:placeholderText="2023">
 
                                 <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edEndYear0"
+                                    android:id="@+id/edEndDate0"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
@@ -223,6 +246,22 @@
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/chbPresentStudying0"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:buttonTint="@color/purple_500"
+                                android:checked="false"
+                                android:text="I am currently studying in this course"></CheckBox>
+                        </LinearLayout>
+
 
                         <Button
                             android:id="@+id/btnRemoveCard0"
@@ -278,6 +317,7 @@
                             app:placeholderText="BSc.IT">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edCourseName1"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -299,6 +339,7 @@
                             app:placeholderText="Gujarat University">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edSclName1"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -320,6 +361,7 @@
                             app:placeholderText="8.6 CGPA">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edGrade1"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:inputType="text"
@@ -331,24 +373,33 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <ImageButton
+                                android:id="@+id/btnStartDate1"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
                             <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/tilStartYear1"
+                                android:id="@+id/tilStartDate1"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="Start Year"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
                                 app:endIconMode="clear_text"
                                 app:endIconTint="@color/purple_500"
-                                app:placeholderText="2020">
+                                app:placeholderText="2021">
 
                                 <com.google.android.material.textfield.TextInputEditText
 
-                                    android:id="@+id/edStartYear1"
+                                    android:id="@+id/edStartDate1"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
@@ -356,12 +407,24 @@
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
+                            <ImageButton
+                                android:id="@+id/btnEndDate1"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
+
                             <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/tilEndYear1"
+                                android:id="@+id/tilEndDate1"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
+                                android:enabled="false"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
                                 android:hint="End Year"
@@ -372,7 +435,7 @@
                                 app:placeholderText="2023">
 
                                 <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edEndYear1"
+                                    android:id="@+id/edEndDate1"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
@@ -381,8 +444,219 @@
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/chbPresentStudying1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:buttonTint="@color/purple_500"
+                                android:layout_marginLeft="10dp"
+                                android:checked="false"
+                                android:text="I am currently working in this role"></CheckBox>
+                        </LinearLayout>
+
                         <Button
                             android:id="@+id/btnRemoveCard1"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/button_design"
+                            android:text="Remove Education"
+                            android:textColor="@color/white"
+                            app:cornerRadius="30dp"
+                            app:icon="@drawable/ic_trash"
+                            app:iconTint="@color/white" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/EduCard2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp"
+                    app:cardMaxElevation="12dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    tools:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilCourseName2"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:hint="Degree / Course"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/purple_500"
+                            app:placeholderText="BSc.IT">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edCourseName2"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="text"
+                                android:padding="5dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilSclName2"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:hint="University / School"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/purple_500"
+                            app:placeholderText="Gujarat University">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edSclName2"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="text"
+                                android:padding="5dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilGrade2"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:hint="Grade / Score"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/purple_500"
+                            app:placeholderText="8.6 CGPA">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edGrade2"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="text"
+                                android:padding="5dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/btnStartDate2"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilStartDate2"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                android:hint="Start Year"
+                                app:boxBackgroundColor="@color/white"
+                                app:boxBackgroundMode="outline"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/purple_500"
+                                app:placeholderText="2021">
+
+                                <com.google.android.material.textfield.TextInputEditText
+
+                                    android:id="@+id/edStartDate2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:inputType="numberSigned"
+                                    android:maxLength="4"
+                                    android:padding="5dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <ImageButton
+                                android:id="@+id/btnEndDate2"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:scaleType="fitCenter"
+                                android:backgroundTint="@color/white"
+                                app:srcCompat="@drawable/ic_date_picker"
+                                />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilEndDate2"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:enabled="false"
+                                android:layout_marginEnd="10dp"
+                                android:layout_weight="1"
+                                android:hint="End Year"
+                                app:boxBackgroundColor="@color/white"
+                                app:boxBackgroundMode="outline"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/purple_500"
+                                app:placeholderText="2023">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edEndDate2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:inputType="numberSigned"
+                                    android:maxLength="4"
+                                    android:padding="5dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/chbPresentStudying2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:buttonTint="@color/purple_500"
+                                android:layout_marginLeft="10dp"
+                                android:checked="false"
+                                android:text="I am currently working in this role"></CheckBox>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnRemoveCard2"
                             style="@style/Widget.AppCompat.Button"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
