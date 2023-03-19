@@ -106,7 +106,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     isChbPresent0=true;
-                    edEndDate0.setText("Present");
+                    edEndDate0.setText("Pursuing");
                 }else {
                     isChbPresent0=false;
                     edEndDate0.setText("");
@@ -118,7 +118,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     isChbPresent1=true;
-                    edEndDate1.setText("Present");
+                    edEndDate1.setText("Pursuing");
                 }else {
                     isChbPresent1=false;
                     edEndDate1.setText("");
@@ -130,7 +130,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     isChbPresent2=true;
-                    edEndDate2.setText("Present");
+                    edEndDate2.setText("Pursuing");
                 }else {
                     isChbPresent2=false;
                     edEndDate2.setText("");
@@ -160,7 +160,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                     } else if (workDesc0.isEmpty()) {
                         edWorkDesc0.setError("please enter work description");
                     }else{
-                        if(!endDate0.equals("Present")){
+                        if(!endDate0.equals("Pursuing")){
                             try{
                                 SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
                                 Date dStartDate0 = formatter.parse(startDate0);
@@ -200,7 +200,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                     } else if (workDesc1.isEmpty()) {
                         edWorkDesc1.setError("please enter work description");
                     }else{
-                        if(!endDate1.equals("Present")){
+                        if(!endDate1.equals("Pursuing")){
                             try{
                                 SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
                                 Date dStartDate1 = formatter.parse(startDate1);
@@ -239,7 +239,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                     } else if (workDesc2.isEmpty()) {
                         edWorkDesc2.setError("please enter work description");
                     }else{
-                        if(!endDate2.equals("Present")){
+                        if(!endDate2.equals("Pursuing")){
                             try{
                                 SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
                                 Date dStartDate2 = formatter.parse(startDate2);

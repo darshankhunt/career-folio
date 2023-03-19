@@ -10,17 +10,18 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
 
             <Button
@@ -242,7 +243,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="4"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -378,10 +379,10 @@
                                 android:layout_width="55dp"
                                 android:layout_height="55dp"
                                 android:layout_marginTop="20dp"
-                                android:scaleType="fitCenter"
                                 android:backgroundTint="@color/white"
-                                app:srcCompat="@drawable/ic_date_picker"
-                                />
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
+
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilStartDate1"
                                 android:layout_width="match_parent"
@@ -413,10 +414,9 @@
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:scaleType="fitCenter"
                                 android:backgroundTint="@color/white"
-                                app:srcCompat="@drawable/ic_date_picker"
-                                />
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilEndDate1"
@@ -424,9 +424,9 @@
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:enabled="false"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="End Year"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
@@ -439,7 +439,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="4"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -453,10 +453,10 @@
                                 android:id="@+id/chbPresentStudying1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:buttonTint="@color/purple_500"
                                 android:layout_marginLeft="10dp"
+                                android:buttonTint="@color/purple_500"
                                 android:checked="false"
-                                android:text="I am currently working in this role"></CheckBox>
+                                android:text="I am currently studying in this course"></CheckBox>
                         </LinearLayout>
 
                         <Button
@@ -574,10 +574,10 @@
                                 android:layout_width="55dp"
                                 android:layout_height="55dp"
                                 android:layout_marginTop="20dp"
-                                android:scaleType="fitCenter"
                                 android:backgroundTint="@color/white"
-                                app:srcCompat="@drawable/ic_date_picker"
-                                />
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
+
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilStartDate2"
                                 android:layout_width="match_parent"
@@ -609,10 +609,9 @@
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:scaleType="fitCenter"
                                 android:backgroundTint="@color/white"
-                                app:srcCompat="@drawable/ic_date_picker"
-                                />
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_date_picker" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tilEndDate2"
@@ -620,9 +619,9 @@
                                 android:layout_height="55dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:enabled="false"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:hint="End Year"
                                 app:boxBackgroundColor="@color/white"
                                 app:boxBackgroundMode="outline"
@@ -635,7 +634,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="4"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -649,10 +648,10 @@
                                 android:id="@+id/chbPresentStudying2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:buttonTint="@color/purple_500"
                                 android:layout_marginLeft="10dp"
+                                android:buttonTint="@color/purple_500"
                                 android:checked="false"
-                                android:text="I am currently working in this role"></CheckBox>
+                                android:text="I am currently studying in this course"></CheckBox>
                         </LinearLayout>
 
                         <Button
@@ -679,12 +678,25 @@
             </LinearLayout>
 
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-
+    <Button
+        android:id="@+id/btnEduSave"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_design"
+        android:text="Save &amp; Next"
+        android:textColor="@color/white"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

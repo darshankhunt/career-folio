@@ -182,7 +182,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="7"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -217,7 +217,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="7"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -377,7 +377,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="7"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -413,7 +413,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="7"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
@@ -574,7 +574,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="7"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -610,7 +610,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:inputType="numberSigned"
-                                    android:maxLength="7"
+                                    android:maxLength="8"
                                     android:padding="5dp" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
