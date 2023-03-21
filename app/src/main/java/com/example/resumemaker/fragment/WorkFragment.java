@@ -370,6 +370,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                                   int monthOfYear,
                                                   int dayOfMonth) {
                                 StartDate.setText((monthOfYear + 1) + "/" + year);
+                                StartDate.setError(null);
                             }
                         }, year, month, date);
         ((ViewGroup)datePickerDialog.getDatePicker())

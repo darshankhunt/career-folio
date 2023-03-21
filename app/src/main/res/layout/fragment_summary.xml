@@ -37,13 +37,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20"
+
         app:placeholderText="I am a DevOps engineer that have excellent organization skills.">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edObjective"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:gravity="start"
+            android:gravity="top"
             android:inputType="textMultiLine"
             android:padding="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
