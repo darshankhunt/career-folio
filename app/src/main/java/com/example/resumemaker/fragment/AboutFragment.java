@@ -80,7 +80,6 @@ public class AboutFragment extends Fragment {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.e("Error",error.getLocalizedMessage());
-
                         }
                     }){
                         protected Map<String, String> getParams(){

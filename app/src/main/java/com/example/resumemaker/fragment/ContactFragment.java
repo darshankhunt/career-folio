@@ -1,6 +1,7 @@
 package com.example.resumemaker.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,17 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.resumemaker.R;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ContactFragment extends Fragment {
     public ContactFragment() {
@@ -57,7 +67,39 @@ public class ContactFragment extends Fragment {
                     edCountry.setError("Please Enter your city or country");
                 }else {
 //                    DataBase Code
-                    Toast.makeText(getActivity(), ""+Email+"|"+Website+"|"+Country+"|"+MoNO, Toast.LENGTH_SHORT).show();
+
+                    RequestQueue queue = Volley.newRequestQueue(getActivity());
+                    String url ="http://172.20.10.5/resumeit/create.php";
+
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    if(response.equals("Success")){
+                                        Toast.makeText(getActivity(), "Data Added!!", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Error",error.getLocalizedMessage());
+                        }
+                    }){
+                        protected Map<String, String> getParams(){
+                            Map<String, String> paramV = new HashMap<>();
+                            paramV.put("first_name", Email);
+                            paramV.put("last_name", MoNO);
+                            paramV.put("profession", Website);
+                            paramV.put("profession", Country);
+                            return paramV;
+                        }
+                    };
+                    queue.add(stringRequest);
+
+
+//                    Toast.makeText(getActivity(), ""+Email+"|"+Website+"|"+Country+"|"+MoNO, Toast.LENGTH_SHORT).show();
                 }
 
 
