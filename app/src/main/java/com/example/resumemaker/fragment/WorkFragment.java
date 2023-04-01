@@ -2,6 +2,8 @@ package com.example.resumemaker.fragment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,12 +23,17 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.R;
+import com.google.gson.Gson;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WorkFragment extends Fragment implements View.OnClickListener {
 
@@ -43,6 +50,11 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
     private boolean isChbPresent0 = false;
     private boolean isChbPresent1 = false;
     private boolean isChbPresent2 = false;
+
+    private ArrayList<String> workArr0 = new ArrayList<String>();
+    private ArrayList<String> workArr1 = new ArrayList<String>();
+    private ArrayList<String> workArr2 = new ArrayList<String>();
+
 
 
     @Override
@@ -170,16 +182,23 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                     Toast.makeText(getActivity(), "Start date is not bigger than End date", Toast.LENGTH_SHORT).show();
                                 }else {
 //                                    Code of DataBase
-                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
-                        }else {
-//                            Code of DataBase
-                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                         }
-
+                        workArr0.add(companyName0);
+                        workArr0.add(jobTitle0);
+                        workArr0.add(startDate0);
+                        workArr0.add(endDate0);
+                        workArr0.add(workDesc0);
+                        Gson gson = new Gson();
+                        String work0 = gson.toJson(workArr0);
+                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor =sh.edit();
+                        editor.putString("workArr0",work0);
+                        editor.commit();
                     }
                 }
 
@@ -209,16 +228,23 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                 {
                                     Toast.makeText(getActivity(), "Start date is not bigger than End date", Toast.LENGTH_SHORT).show();
                                 }else {
-//                                    Code of DataBase
-                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
-                        }else {
-//                            Code of DataBase
-                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                         }
+                        workArr1.add(companyName1);
+                        workArr1.add(jobTitle1);
+                        workArr1.add(startDate1);
+                        workArr1.add(endDate1);
+                        workArr1.add(workDesc1);
+                        Gson gson = new Gson();
+                        String work1 = gson.toJson(workArr1);
+                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor =sh.edit();
+                        editor.putString("workArr1",work1);
+                        editor.commit();
                     }
                 }
 
@@ -249,18 +275,28 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                     Toast.makeText(getActivity(), "Start date is not bigger than End date", Toast.LENGTH_SHORT).show();
                                 }else {
 //                                    Code of DataBase
-                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
-                        }else {
-//                            Code of DataBase
-                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                         }
+                        workArr2.add(companyName2);
+                        workArr2.add(jobTitle2);
+                        workArr2.add(startDate2);
+                        workArr2.add(endDate2);
+                        workArr2.add(workDesc2);
+                        Gson gson = new Gson();
+                        String work2 = gson.toJson(workArr2);
+                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor =sh.edit();
+                        editor.putString("workArr2",work2);
+                        editor.commit();
+
                     }
                 }
 
+                CreateResumeDataActivity.viewPager2.setCurrentItem(3);
             }
         });
         return view;

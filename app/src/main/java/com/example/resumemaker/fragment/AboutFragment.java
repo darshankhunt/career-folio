@@ -1,10 +1,11 @@
 package com.example.resumemaker.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +13,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.resumemaker.CreateResumeDataActivity;
+import com.example.resumemaker.Model.AboutRetrofit;
+import com.example.resumemaker.Model.aboutModel;
 import com.example.resumemaker.R;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+
 public class AboutFragment extends Fragment {
-//    public AboutFragment() {
-//        // Required empty public constructor
-//    }
+
     private EditText edFname, edLname, edProfession;
     private Button btnNext;
 
@@ -61,39 +64,39 @@ public class AboutFragment extends Fragment {
                 } else if (Profession.equals("")) {
                     edProfession.setError("Please Enter Profession");
                 }else {
-//                    DataBase Code
+                    SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor =sh.edit();
+                    editor.putString("first_name", FirstName);
+                    editor.putString("last_name", LastName);
+                    editor.putString("profession", Profession);
+                    editor.commit();
+                    /*CreateResumeDataActivity.aboutData.put("first_name", FirstName);
+                    CreateResumeDataActivity.aboutData.put("last_name", LastName);
+                    CreateResumeDataActivity.aboutData.put("profession", Profession);
+                    Toast.makeText(getActivity(), ""+CreateResumeDataActivity.aboutData, Toast.LENGTH_SHORT).show();*/
+                    CreateResumeDataActivity.viewPager2.setCurrentItem(1);
+//                    Retrofit retrofit = new Retrofit.Builder().baseUrl("http://172.20.10.5/resumeit/")
+//                            .addConverterFactory(GsonConverterFactory.create()).build();
+//
+//                    AboutRetrofit aboutRetrofit = retrofit.create(AboutRetrofit.class);
+//
+//                    aboutModel aboutModel = new aboutModel(FirstName,LastName,Profession);
+//                    Call<aboutModel> call =  aboutRetrofit.PostData(aboutModel);
+//                    call.enqueue(new Callback<com.example.resumemaker.Model.aboutModel>() {
+//                        @Override
+//                        public void onResponse(Call<com.example.resumemaker.Model.aboutModel> call, Response<com.example.resumemaker.Model.aboutModel> response) {
+//                            Toast.makeText(getActivity(), "Data inserted", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<com.example.resumemaker.Model.aboutModel> call, Throwable t) {
+//                            Toast.makeText(getActivity(), "Data not inserted", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
 
-                    RequestQueue queue = Volley.newRequestQueue(getActivity());
-                    String url ="http://172.20.10.5/resumeit/create.php";
 
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    if(response.equals("Success")){
-                                        Toast.makeText(getActivity(), "Data Added!!", Toast.LENGTH_SHORT).show();
-                                    }else {
-                                        Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("Error",error.getLocalizedMessage());
-                        }
-                    }){
-                        protected Map<String, String> getParams(){
-                            Map<String, String> paramV = new HashMap<>();
-                            paramV.put("first_name", FirstName);
-                            paramV.put("last_name", LastName);
-                            paramV.put("profession", Profession);
-                            return paramV;
-                        }
-                    };
-                    queue.add(stringRequest);
-
+//                    String url ="http://172.20.10.5/resumeit/create.php";
 //                    Toast.makeText(getActivity(), ""+FirstName+"|"+LastName+"|"+Profession, Toast.LENGTH_SHORT).show();
-
                 }
             }
         });

@@ -10,10 +10,14 @@ import android.os.Bundle;
 import com.example.resumemaker.adapter.ResumeDetailsAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CreateResumeDataActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     private TabLayout tabLayout;
-    private ViewPager2 viewPager2;
+    public static ViewPager2 viewPager2;
+    public static Map<String, String> aboutData = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class CreateResumeDataActivity extends AppCompatActivity implements TabLa
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+
 
     }
 

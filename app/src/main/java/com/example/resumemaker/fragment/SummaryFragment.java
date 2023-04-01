@@ -1,5 +1,7 @@
 package com.example.resumemaker.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +10,18 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentSkillsBinding;
 import com.example.resumemaker.databinding.FragmentSummaryBinding;
 
+import java.util.ArrayList;
+
 public class SummaryFragment extends Fragment {
 
     FragmentSummaryBinding binding;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,7 +39,12 @@ public class SummaryFragment extends Fragment {
                     Toast.makeText(getActivity(), "your objective is too long.", Toast.LENGTH_SHORT).show();
                 } else {
 //                    Code of Database
-                    Toast.makeText(getActivity(), ""+objective, Toast.LENGTH_SHORT).show();
+                    SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor =sh.edit();
+                    editor.putString("objective", objective);
+                    editor.commit();
+                    CreateResumeDataActivity.viewPager2.setCurrentItem(6);
+//                    Toast.makeText(getActivity(), ""+objective, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -2,6 +2,8 @@ package com.example.resumemaker.fragment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +18,15 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentEducationBinding;
 import com.example.resumemaker.databinding.FragmentWorkBinding;
+import com.google.gson.Gson;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -32,6 +37,10 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
     private boolean isChbPresent0 = false;
     private boolean isChbPresent1 = false;
     private boolean isChbPresent2 = false;
+
+    private ArrayList<String> eduArr0 = new ArrayList<String>();
+    private ArrayList<String> eduArr1 = new ArrayList<String>();
+    private ArrayList<String> eduArr2 = new ArrayList<String>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -120,16 +129,23 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                     Toast.makeText(getActivity(), "Start year is not bigger than End year", Toast.LENGTH_SHORT).show();
                                 }else {
 //                                    Code of DataBase
-                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
-                        }else {
-//                            Code of DataBase
-                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                         }
-
+                        eduArr0.add(courseName0);
+                        eduArr0.add(sclName0);
+                        eduArr0.add(grade0);
+                        eduArr0.add(startDate0);
+                        eduArr0.add(endDate0);
+                        Gson gson = new Gson();
+                        String edu0 = gson.toJson(eduArr0);
+                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor =sh.edit();
+                        editor.putString("eduArr0",edu0);
+                        editor.commit();
                     }
                 }
 
@@ -160,16 +176,23 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                     Toast.makeText(getActivity(), "Start year is not bigger than End year", Toast.LENGTH_SHORT).show();
                                 }else {
 //                                    Code of DataBase
-                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
-                        }else {
-//                            Code of DataBase
-                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                         }
-
+                        eduArr1.add(courseName1);
+                        eduArr1.add(sclName1);
+                        eduArr1.add(grade1);
+                        eduArr1.add(startDate1);
+                        eduArr1.add(endDate1);
+                        Gson gson = new Gson();
+                        String edu1 = gson.toJson(eduArr1);
+                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor =sh.edit();
+                        editor.putString("eduArr1",edu1);
+                        editor.commit();
                     }
                 }
 
@@ -200,19 +223,28 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                     Toast.makeText(getActivity(), "Start year is not bigger than End year", Toast.LENGTH_SHORT).show();
                                 }else {
 //                                    Code of DataBase
-                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
-                        }else {
-//                            Code of DataBase
-                            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                         }
+                        eduArr2.add(courseName2);
+                        eduArr2.add(sclName2);
+                        eduArr2.add(grade2);
+                        eduArr2.add(startDate2);
+                        eduArr2.add(endDate2);
+                        Gson gson = new Gson();
+                        String edu2 = gson.toJson(eduArr2);
+                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor =sh.edit();
+                        editor.putString("eduArr2",edu2);
+                        editor.commit();
 
                     }
                 }
 
+                CreateResumeDataActivity.viewPager2.setCurrentItem(4);
             }
         });
 
@@ -294,6 +326,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                                   int monthOfYear,
                                                   int dayOfMonth) {
                                 StartDate.setText(year+"");
+                                StartDate.setError(null);
                             }
                         }, year, month, date);
         ((ViewGroup)datePickerDialog.getDatePicker())

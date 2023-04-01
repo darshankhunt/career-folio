@@ -1,5 +1,7 @@
 package com.example.resumemaker.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,12 +13,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -61,14 +58,25 @@ public class ContactFragment extends Fragment {
                     edEmail.setError("Please Enter Valid Email Address");
                 } else if (MoNO.equals("")) {
                     edMoNo.setError("Please Enter Mobile Number");
-                } else if (Website.equals("")){
-//                    edWebsite.setError("Please Enter any website");
                 } else if (Country.equals("")) {
                     edCountry.setError("Please Enter your city or country");
                 }else {
+                    SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor =sh.edit();
+                    editor.putString("email", Email);
+                    editor.putString("MoNO", MoNO);
+                    if(Website.equals("")){
+                        editor.putString("Website", "");
+                    }else {
+                        editor.putString("Website", Website);
+                    }
+                    editor.putString("Country", Country);
+                    editor.commit();
+                    CreateResumeDataActivity.viewPager2.setCurrentItem(2);
+
 //                    DataBase Code
 
-                    RequestQueue queue = Volley.newRequestQueue(getActivity());
+                    /*RequestQueue queue = Volley.newRequestQueue(getActivity());
                     String url ="http://172.20.10.5/resumeit/create.php";
 
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -97,7 +105,7 @@ public class ContactFragment extends Fragment {
                         }
                     };
                     queue.add(stringRequest);
-
+*/
 
 //                    Toast.makeText(getActivity(), ""+Email+"|"+Website+"|"+Country+"|"+MoNO, Toast.LENGTH_SHORT).show();
                 }
