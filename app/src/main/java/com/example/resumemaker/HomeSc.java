@@ -3,6 +3,7 @@ package com.example.resumemaker;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,18 @@ public class HomeSc extends AppCompatActivity {
         binding = ActivityHomeScBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 //        setContentView(R.layout.activity_home_sc);
-        binding.svHome.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+
+        getSupportActionBar().hide();
+
+        binding.btnExpandedFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeSc.this, CreateResumeDataActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*binding.svHome.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if(scrollY > oldScrollY + 12 && binding.expandedFab.isExtended()){
@@ -33,6 +45,6 @@ public class HomeSc extends AppCompatActivity {
                     binding.expandedFab.extend();
                 }
             }
-        });
+        });*/
     }
 }
