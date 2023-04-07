@@ -32,7 +32,7 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
     private String  skillLevel2="Intermediate";
     private String  skillLevel3="Intermediate";
 
-    private ArrayList<String> skillArr0 = new ArrayList<String>();
+    private ArrayList<String> skillArr0;
     private ArrayList<String> skillArr1 = new ArrayList<String>();
     private ArrayList<String> skillArr2 = new ArrayList<String>();
     private ArrayList<String> skillArr3 = new ArrayList<String>();
@@ -76,6 +76,7 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName0.setError("Please enter skill");
                     }else {
 //                        Code of Database
+                        skillArr0 = new ArrayList<String>();
                         skillArr0.add(skill0);
                         skillArr0.add(skillLevel0);
                         Gson gson = new Gson();
@@ -110,6 +111,7 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName1.setError("Please enter skill");
                     }else {
 //                        Code of Database
+                        skillArr1 = new ArrayList<String>();
                         skillArr1.add(skill1);
                         skillArr1.add(skillLevel1);
                         Gson gson = new Gson();
@@ -143,6 +145,7 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName2.setError("Please enter skill");
                     }else {
 //                        Code of Database
+                        skillArr2 = new ArrayList<String>();
                         skillArr2.add(skill2);
                         skillArr2.add(skillLevel2);
                         Gson gson = new Gson();
@@ -176,6 +179,7 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName3.setError("Please enter skill");
                     }else {
 //                        Code of Database
+                        skillArr3 = new ArrayList<String>();
                         skillArr3.add(skill3);
                         skillArr3.add(skillLevel3);
                         Gson gson = new Gson();

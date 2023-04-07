@@ -38,9 +38,9 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
     private boolean isChbPresent1 = false;
     private boolean isChbPresent2 = false;
 
-    private ArrayList<String> eduArr0 = new ArrayList<String>();
-    private ArrayList<String> eduArr1 = new ArrayList<String>();
-    private ArrayList<String> eduArr2 = new ArrayList<String>();
+    private ArrayList<String> eduArr0;
+    private ArrayList<String> eduArr1;
+    private ArrayList<String> eduArr2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -135,6 +135,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 e1.printStackTrace();
                             }
                         }
+                        eduArr0 = new ArrayList<String>();
                         eduArr0.add(courseName0);
                         eduArr0.add(sclName0);
                         eduArr0.add(grade0);
@@ -182,6 +183,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 e1.printStackTrace();
                             }
                         }
+                        eduArr1 = new ArrayList<String>();
                         eduArr1.add(courseName1);
                         eduArr1.add(sclName1);
                         eduArr1.add(grade1);
@@ -229,6 +231,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 e1.printStackTrace();
                             }
                         }
+                        eduArr2 = new ArrayList<String>();
                         eduArr2.add(courseName2);
                         eduArr2.add(sclName2);
                         eduArr2.add(grade2);

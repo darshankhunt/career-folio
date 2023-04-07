@@ -16,6 +16,12 @@ import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.HomeSc;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentDoneBinding;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoneFragment extends Fragment {
 
@@ -112,9 +118,44 @@ public class DoneFragment extends Fragment {
 
 //                Code of API
 
-                Intent intent = new Intent(getActivity(), HomeSc.class);
-                startActivity(intent);
-                getActivity().finish();
+                String first_name = sh.getString("first_name","");
+                String last_name = sh.getString("last_name","");
+                String profession = sh.getString("profession","");
+                String email = sh.getString("email","");
+                String MoNO = sh.getString("MoNO","");
+                String Website = sh.getString("Website","");
+                String Country = sh.getString("Country","");
+                String objective = sh.getString("objective","");
+                int ResumeTemplateId = sh.getInt("ResumeTemplateId",0);
+
+                Gson gson = new Gson();
+                String jsonWorkArr0 = sh.getString("workArr0", "");
+                String jsonWorkArr1 = sh.getString("workArr1", "");
+                String jsonWorkArr2 = sh.getString("workArr2", "");
+                String jsonEduArr0 = sh.getString("eduArr0", "");
+                String jsonEduArr1 = sh.getString("eduArr1", "");
+                String jsonEduArr2 = sh.getString("eduArr2", "");
+                String jsonskillArr0 = sh.getString("skillArr0", "");
+                String jsonskillArr1 = sh.getString("skillArr1", "");
+                String jsonskillArr2 = sh.getString("skillArr2", "");
+                String jsonskillArr3 = sh.getString("skillArr3", "");
+                Type type = new TypeToken<ArrayList<String>>() {}.getType();
+                List<String> workArr0 = gson.fromJson(jsonWorkArr0, type);
+                List<String> workArr1 = gson.fromJson(jsonWorkArr1, type);
+                List<String> workArr2 = gson.fromJson(jsonWorkArr2, type);
+                List<String> eduArr0 = gson.fromJson(jsonEduArr0, type);
+                List<String> eduArr1 = gson.fromJson(jsonEduArr1, type);
+                List<String> eduArr2 = gson.fromJson(jsonEduArr2, type);
+                List<String> skillArr0 = gson.fromJson(jsonskillArr0, type);
+                List<String> skillArr1 = gson.fromJson(jsonskillArr1, type);
+                List<String> skillArr2 = gson.fromJson(jsonskillArr2, type);
+                List<String> skillArr3 = gson.fromJson(jsonskillArr3, type);
+
+                Toast.makeText(getActivity(), ""+workArr0+workArr1+workArr2+eduArr0+eduArr1+eduArr2+objective+ResumeTemplateId, Toast.LENGTH_SHORT).show();
+
+//                Intent intent = new Intent(getActivity(), HomeSc.class);
+//                startActivity(intent);
+//                getActivity().finish();
             }
         });
 

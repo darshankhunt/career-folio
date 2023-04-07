@@ -51,9 +51,9 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
     private boolean isChbPresent1 = false;
     private boolean isChbPresent2 = false;
 
-    private ArrayList<String> workArr0 = new ArrayList<String>();
-    private ArrayList<String> workArr1 = new ArrayList<String>();
-    private ArrayList<String> workArr2 = new ArrayList<String>();
+    private ArrayList<String> workArr0;
+    private ArrayList<String> workArr1;
+    private ArrayList<String> workArr2;
 
 
 
@@ -188,6 +188,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                 e1.printStackTrace();
                             }
                         }
+                        workArr0 = new ArrayList<String>();
                         workArr0.add(companyName0);
                         workArr0.add(jobTitle0);
                         workArr0.add(startDate0);
@@ -234,6 +235,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                 e1.printStackTrace();
                             }
                         }
+                        workArr1 = new ArrayList<String>();
                         workArr1.add(companyName1);
                         workArr1.add(jobTitle1);
                         workArr1.add(startDate1);
@@ -281,6 +283,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                 e1.printStackTrace();
                             }
                         }
+                        workArr2 = new ArrayList<String>();
                         workArr2.add(companyName2);
                         workArr2.add(jobTitle2);
                         workArr2.add(startDate2);

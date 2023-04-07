@@ -65,11 +65,14 @@ public class AboutFragment extends Fragment {
                     edProfession.setError("Please Enter Profession");
                 }else {
                     SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+
                     SharedPreferences.Editor editor =sh.edit();
                     editor.putString("first_name", FirstName);
                     editor.putString("last_name", LastName);
                     editor.putString("profession", Profession);
                     editor.commit();
+
+
                     /*CreateResumeDataActivity.aboutData.put("first_name", FirstName);
                     CreateResumeDataActivity.aboutData.put("last_name", LastName);
                     CreateResumeDataActivity.aboutData.put("profession", Profession);
