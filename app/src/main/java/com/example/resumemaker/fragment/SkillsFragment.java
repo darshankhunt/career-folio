@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.CreateResumeDataActivity;
+import com.example.resumemaker.Model.SkillModel;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentEducationBinding;
 import com.example.resumemaker.databinding.FragmentSkillsBinding;
@@ -33,9 +34,11 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
     private String  skillLevel3="Intermediate";
 
     private ArrayList<String> skillArr0;
-    private ArrayList<String> skillArr1 = new ArrayList<String>();
-    private ArrayList<String> skillArr2 = new ArrayList<String>();
-    private ArrayList<String> skillArr3 = new ArrayList<String>();
+    private ArrayList<String> skillArr1;
+    private ArrayList<String> skillArr2;
+    private ArrayList<String> skillArr3;
+
+    private ArrayList<SkillModel> skillList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,14 +79,21 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName0.setError("Please enter skill");
                     }else {
 //                        Code of Database
+
+                        SkillModel s0 = new SkillModel(skill0,skillLevel0);
+                        s0.setSkill(skill0);
+                        s0.setSkillLevel(skillLevel0);
+                        skillList = new ArrayList<>();
+                        skillList.add(s0);
+
                         skillArr0 = new ArrayList<String>();
                         skillArr0.add(skill0);
                         skillArr0.add(skillLevel0);
                         Gson gson = new Gson();
-                        String s0 = gson.toJson(skillArr0);
+                        String sj0 = gson.toJson(skillArr0);
                         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor =sh.edit();
-                        editor.putString("skillArr0",s0);
+                        editor.putString("skillArr0",sj0);
                         editor.commit();
 
 //                        Toast.makeText(getActivity(), ""+skill0+skillLevel0, Toast.LENGTH_SHORT).show();
@@ -111,14 +121,21 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName1.setError("Please enter skill");
                     }else {
 //                        Code of Database
+
+                        SkillModel s1 = new SkillModel(skill1,skillLevel1);
+                        s1.setSkill(skill1);
+                        s1.setSkillLevel(skillLevel1);
+                        skillList = new ArrayList<>();
+                        skillList.add(s1);
+
                         skillArr1 = new ArrayList<String>();
                         skillArr1.add(skill1);
                         skillArr1.add(skillLevel1);
                         Gson gson = new Gson();
-                        String s1 = gson.toJson(skillArr1);
+                        String sj1 = gson.toJson(skillArr1);
                         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor =sh.edit();
-                        editor.putString("skillArr1",s1);
+                        editor.putString("skillArr1",sj1);
                         editor.commit();
 //                        Toast.makeText(getActivity(), ""+skill1+skillLevel1, Toast.LENGTH_SHORT).show();
                     }
@@ -145,14 +162,21 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName2.setError("Please enter skill");
                     }else {
 //                        Code of Database
+
+                        SkillModel s2 = new SkillModel(skill2,skillLevel2);
+                        s2.setSkill(skill2);
+                        s2.setSkillLevel(skillLevel2);
+                        skillList = new ArrayList<>();
+                        skillList.add(s2);
+
                         skillArr2 = new ArrayList<String>();
                         skillArr2.add(skill2);
                         skillArr2.add(skillLevel2);
                         Gson gson = new Gson();
-                        String s2 = gson.toJson(skillArr2);
+                        String sj2 = gson.toJson(skillArr2);
                         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor =sh.edit();
-                        editor.putString("skillArr2",s2);
+                        editor.putString("skillArr2",sj2);
                         editor.commit();
 //                        Toast.makeText(getActivity(), ""+skill2+skillLevel2, Toast.LENGTH_SHORT).show();
                     }
@@ -179,14 +203,21 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         binding.edSkillName3.setError("Please enter skill");
                     }else {
 //                        Code of Database
+
+                        SkillModel s3 = new SkillModel(skill3,skillLevel3);
+                        s3.setSkill(skill3);
+                        s3.setSkillLevel(skillLevel3);
+                        skillList = new ArrayList<>();
+                        skillList.add(s3);
+
                         skillArr3 = new ArrayList<String>();
                         skillArr3.add(skill3);
                         skillArr3.add(skillLevel3);
                         Gson gson = new Gson();
-                        String s3 = gson.toJson(skillArr3);
+                        String sj3 = gson.toJson(skillArr3);
                         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor =sh.edit();
-                        editor.putString("skillArr3",s3);
+                        editor.putString("skillArr3",sj3);
                         editor.commit();
 //                        Toast.makeText(getActivity(), ""+skill3+skillLevel3, Toast.LENGTH_SHORT).show();
                     }

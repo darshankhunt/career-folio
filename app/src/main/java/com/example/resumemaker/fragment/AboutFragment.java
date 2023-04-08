@@ -11,21 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.resumemaker.CreateResumeDataActivity;
-import com.example.resumemaker.Model.AboutRetrofit;
-import com.example.resumemaker.Model.aboutModel;
+import com.example.resumemaker.Model.UserModel;
 import com.example.resumemaker.R;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class AboutFragment extends Fragment {
@@ -55,8 +44,6 @@ public class AboutFragment extends Fragment {
                 String FirstName = edFname.getText().toString().trim();
                 String LastName = edLname.getText().toString().trim();
                 String Profession = edProfession.getText().toString().trim();
-
-
                 if(FirstName.equals("")){
                     edFname.setError("Please Enter FirstName");
                 } else if (LastName.equals("")) {
@@ -64,14 +51,17 @@ public class AboutFragment extends Fragment {
                 } else if (Profession.equals("")) {
                     edProfession.setError("Please Enter Profession");
                 }else {
+                    UserModel u=new UserModel(FirstName,LastName,Profession);
+                    u.setfName(FirstName);
+                    u.setlName(LastName);
+                    u.setProfession(Profession);
+
                     SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-
                     SharedPreferences.Editor editor =sh.edit();
-                    editor.putString("first_name", FirstName);
-                    editor.putString("last_name", LastName);
-                    editor.putString("profession", Profession);
+                    editor.putString("first_name", u.getfName());
+                    editor.putString("last_name", u.getlName());
+                    editor.putString("profession", u.getProfession());
                     editor.commit();
-
 
                     /*CreateResumeDataActivity.aboutData.put("first_name", FirstName);
                     CreateResumeDataActivity.aboutData.put("last_name", LastName);

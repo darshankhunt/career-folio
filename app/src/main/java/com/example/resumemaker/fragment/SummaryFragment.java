@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.CreateResumeDataActivity;
+import com.example.resumemaker.Model.UserModel;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentSkillsBinding;
 import com.example.resumemaker.databinding.FragmentSummaryBinding;
@@ -39,9 +40,13 @@ public class SummaryFragment extends Fragment {
                     Toast.makeText(getActivity(), "your objective is too long.", Toast.LENGTH_SHORT).show();
                 } else {
 //                    Code of Database
+
+                    UserModel u = new UserModel(objective);
+                    u.setObjective(objective);
+
                     SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor =sh.edit();
-                    editor.putString("objective", objective);
+                    editor.putString("objective", u.getObjective());
                     editor.commit();
                     CreateResumeDataActivity.viewPager2.setCurrentItem(6);
 //                    Toast.makeText(getActivity(), ""+objective, Toast.LENGTH_SHORT).show();

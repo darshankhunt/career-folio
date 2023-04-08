@@ -24,6 +24,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.CreateResumeDataActivity;
+import com.example.resumemaker.Model.WorkModel;
 import com.example.resumemaker.R;
 import com.google.gson.Gson;
 
@@ -54,6 +55,8 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
     private ArrayList<String> workArr0;
     private ArrayList<String> workArr1;
     private ArrayList<String> workArr2;
+
+    private ArrayList<WorkModel> workList;
 
 
 
@@ -188,6 +191,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                 e1.printStackTrace();
                             }
                         }
+
+                        WorkModel w0 = new WorkModel(companyName0,jobTitle0,startDate0,endDate0,workDesc0);
+                        w0.setCompanyName(companyName0);
+                        w0.setJobTitle(jobTitle0);
+                        w0.setStartDate(startDate0);
+                        w0.setEndDate(endDate0);
+                        w0.setWorkDesc(workDesc0);
+                        workList = new ArrayList<>();
+                        workList.add(w0);
+
+                        Toast.makeText(getActivity(), ""+workList, Toast.LENGTH_SHORT).show();
                         workArr0 = new ArrayList<String>();
                         workArr0.add(companyName0);
                         workArr0.add(jobTitle0);
@@ -198,7 +212,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                         String work0 = gson.toJson(workArr0);
                         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor =sh.edit();
-                        editor.putString("workArr0",work0);
+                        editor.putString("workArr0", work0);
                         editor.commit();
                     }
                 }
@@ -235,6 +249,16 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                 e1.printStackTrace();
                             }
                         }
+
+                        WorkModel w1 = new WorkModel(companyName1,jobTitle1,startDate1,endDate1,workDesc1);
+                        w1.setCompanyName(companyName1);
+                        w1.setJobTitle(jobTitle1);
+                        w1.setStartDate(startDate1);
+                        w1.setEndDate(endDate1);
+                        w1.setWorkDesc(workDesc1);
+                        workList = new ArrayList<>();
+                        workList.add(w1);
+
                         workArr1 = new ArrayList<String>();
                         workArr1.add(companyName1);
                         workArr1.add(jobTitle1);
@@ -283,6 +307,16 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                                 e1.printStackTrace();
                             }
                         }
+
+                        WorkModel w2 = new WorkModel(companyName2,jobTitle2,startDate2,endDate2,workDesc2);
+                        w2.setCompanyName(companyName2);
+                        w2.setJobTitle(jobTitle2);
+                        w2.setStartDate(startDate2);
+                        w2.setEndDate(endDate2);
+                        w2.setWorkDesc(workDesc2);
+                        workList = new ArrayList<>();
+                        workList.add(w2);
+
                         workArr2 = new ArrayList<String>();
                         workArr2.add(companyName2);
                         workArr2.add(jobTitle2);

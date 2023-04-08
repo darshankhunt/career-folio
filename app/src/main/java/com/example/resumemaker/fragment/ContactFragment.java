@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.CreateResumeDataActivity;
+import com.example.resumemaker.Model.UserModel;
 import com.example.resumemaker.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -49,7 +50,6 @@ public class ContactFragment extends Fragment {
                 String Website = edWebsite.getText().toString().trim();
                 String Country = edCountry.getText().toString().trim();
                 String MoNO = edMoNo.getText().toString().trim();
-
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
                 if(Email.equals("")){
@@ -61,16 +61,23 @@ public class ContactFragment extends Fragment {
                 } else if (Country.equals("")) {
                     edCountry.setError("Please Enter your city or country");
                 }else {
+                    UserModel u = new UserModel(Email,MoNO,Website,Country);
+                    u.setEmail(Email);
+                    u.setContactNumber(MoNO);
+                    if(Website.equals("")){
+                        u.setWebsite("");
+                    }else {
+                        u.setWebsite(Website);
+                    }
+                    u.setWebsite(Website);
+                    u.setCountry(Country);
+
                     SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor =sh.edit();
-                    editor.putString("email", Email);
-                    editor.putString("MoNO", MoNO);
-                    if(Website.equals("")){
-                        editor.putString("Website", "");
-                    }else {
-                        editor.putString("Website", Website);
-                    }
-                    editor.putString("Country", Country);
+                    editor.putString("email", u.getEmail());
+                    editor.putString("MoNO", u.getContactNumber());
+                    editor.putString("Website",u.getWebsite());
+                    editor.putString("Country", u.getCountry());
                     editor.commit();
                     CreateResumeDataActivity.viewPager2.setCurrentItem(2);
 

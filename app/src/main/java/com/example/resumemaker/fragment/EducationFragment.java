@@ -19,6 +19,8 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.CreateResumeDataActivity;
+import com.example.resumemaker.Model.EducationModel;
+import com.example.resumemaker.Model.WorkModel;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentEducationBinding;
 import com.example.resumemaker.databinding.FragmentWorkBinding;
@@ -41,6 +43,8 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
     private ArrayList<String> eduArr0;
     private ArrayList<String> eduArr1;
     private ArrayList<String> eduArr2;
+
+    private ArrayList<EducationModel> eduList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -135,6 +139,15 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 e1.printStackTrace();
                             }
                         }
+                        EducationModel e0 = new EducationModel(courseName0,sclName0,grade0,startDate0,endDate0);
+                        e0.setCourseName(courseName0);
+                        e0.setSclName(sclName0);
+                        e0.setGrade(grade0);
+                        e0.setStartDate(startDate0);
+                        e0.setEndDate(endDate0);
+                        eduList = new ArrayList<>();
+                        eduList.add(e0);
+
                         eduArr0 = new ArrayList<String>();
                         eduArr0.add(courseName0);
                         eduArr0.add(sclName0);
@@ -183,6 +196,16 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 e1.printStackTrace();
                             }
                         }
+
+                        EducationModel e1 = new EducationModel(courseName1,sclName1,grade1,startDate1,endDate1);
+                        e1.setCourseName(courseName1);
+                        e1.setSclName(sclName1);
+                        e1.setGrade(grade1);
+                        e1.setStartDate(startDate1);
+                        e1.setEndDate(endDate1);
+                        eduList = new ArrayList<>();
+                        eduList.add(e1);
+
                         eduArr1 = new ArrayList<String>();
                         eduArr1.add(courseName1);
                         eduArr1.add(sclName1);
@@ -224,13 +247,22 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 {
                                     Toast.makeText(getActivity(), "Start year is not bigger than End year", Toast.LENGTH_SHORT).show();
                                 }else {
-//                                    Code of DataBase
 //                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
                         }
+//                        Code of DB
+                        EducationModel e2 = new EducationModel(courseName2,sclName2,grade2,startDate2,endDate2);
+                        e2.setCourseName(courseName2);
+                        e2.setSclName(sclName2);
+                        e2.setGrade(grade2);
+                        e2.setStartDate(startDate2);
+                        e2.setEndDate(endDate2);
+                        eduList = new ArrayList<>();
+                        eduList.add(e2);
+
                         eduArr2 = new ArrayList<String>();
                         eduArr2.add(courseName2);
                         eduArr2.add(sclName2);
