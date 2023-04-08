@@ -123,10 +123,10 @@ public class DoneFragment extends Fragment {
 //                    Code of Database
                 UserModel u = new UserModel(resumeTemplateId);
                 u.setResumeTemplateId(resumeTemplateId);
-
+                String resTemID = String.valueOf(resumeTemplateId);
                 SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor =sh.edit();
-                editor.putInt("ResumeTemplateId", u.getResumeTemplateId());
+                editor.putString("ResumeTemplateId", resTemID);
                 editor.commit();
 
 //                Code of API
@@ -139,7 +139,7 @@ public class DoneFragment extends Fragment {
                 String Website = sh.getString("Website","");
                 String Country = sh.getString("Country","");
                 String objective = sh.getString("objective","");
-                int ResumeTemplateId = sh.getInt("ResumeTemplateId",0);
+                String ResumeTemplateId = sh.getString("ResumeTemplateId","0");
 
                 Gson gson = new Gson();
                 String jsonWorkArr0 = sh.getString("workArr0", "");
@@ -164,12 +164,10 @@ public class DoneFragment extends Fragment {
                 List<String> skillArr2 = gson.fromJson(jsonskillArr2, type);
                 List<String> skillArr3 = gson.fromJson(jsonskillArr3, type);
 
-//                Toast.makeText(getActivity(), ""+workArr0+workArr1+workArr2+eduArr0+eduArr1+eduArr2+objective+ResumeTemplateId, Toast.LENGTH_SHORT).show();
-
 
 
                 RequestQueue queue = Volley.newRequestQueue(getActivity());
-                String url ="http://192.168.124.45/resumeit/create.php";
+                String url ="http://172.20.10.5/resumeit/create.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
@@ -194,18 +192,38 @@ public class DoneFragment extends Fragment {
                         paramV.put("Website",Website);
                         paramV.put("Country",Country);
                         paramV.put("objective",objective);
-//                        paramV.put("ResumeTemplateId",ResumeTemplateId);
-
+                        paramV.put("ResumeTemplateId",ResumeTemplateId);
+                        String jsonWorkArr0 = new Gson().toJson(workArr0);
+                        paramV.put("workArr0", jsonWorkArr0);
+                        String jsonWorkArr1 = new Gson().toJson(workArr1);
+                        paramV.put("workArr1", jsonWorkArr1);
+                        String jsonWorkArr2 = new Gson().toJson(workArr2);
+                        paramV.put("workArr2", jsonWorkArr2);
+                        String jsonEdu0 = new Gson().toJson(eduArr0);
+                        paramV.put("eduArr0", jsonEdu0);
+                        String jsonEdu1 = new Gson().toJson(eduArr1);
+                        paramV.put("eduArr1", jsonEdu1);
+                        String jsonEdu2 = new Gson().toJson(eduArr2);
+                        paramV.put("eduArr2", jsonEdu2);
+                        String jsonSkill0 = new Gson().toJson(skillArr0);
+                        paramV.put("skillArr0", jsonSkill0);
+                        String jsonSkill1 = new Gson().toJson(skillArr1);
+                        paramV.put("skillArr1", jsonSkill1);
+                        String jsonSkill2 = new Gson().toJson(skillArr2);
+                        paramV.put("skillArr2", jsonSkill2);
+                        String jsonSkill3 = new Gson().toJson(skillArr3);
+                        paramV.put("skillArr3", jsonSkill3);
                         return paramV;
                     }
                 };
                 queue.add(stringRequest);
-                
-                
 
-//                Intent intent = new Intent(getActivity(), HomeSc.class);
-//                startActivity(intent);
-//                getActivity().finish();
+//                Remove data on shared preference file
+                editor.clear().apply();
+
+                Intent intent = new Intent(getActivity(), HomeSc.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
 
