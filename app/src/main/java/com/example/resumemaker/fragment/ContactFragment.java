@@ -36,11 +36,27 @@ public class ContactFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
+        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor =sh.edit();
+        String em = sh.getString("email", "");
+        String MoNo = sh.getString("MoNO", "");
+        String web = sh.getString("Website", "");
+        String coun = sh.getString("Country", "");
+
         btnNext = view.findViewById(R.id.btnNext);
         edEmail = view.findViewById(R.id.edEmail);
         edWebsite = view.findViewById(R.id.edWebsite);
         edCountry = view.findViewById(R.id.edCountry);
         edMoNo = view.findViewById(R.id.edMoNo);
+
+        if(!em.equals(""))
+            edEmail.setText(em);
+        if(!MoNo.equals(""))
+            edMoNo.setText(MoNo);
+        if(!web.equals(""))
+            edWebsite.setText(web);
+        if(!coun.equals(""))
+            edCountry.setText(coun);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,8 +88,6 @@ public class ContactFragment extends Fragment {
                     u.setWebsite(Website);
                     u.setCountry(Country);
 
-                    SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor =sh.edit();
                     editor.putString("email", u.getEmail());
                     editor.putString("MoNO", u.getContactNumber());
                     editor.putString("Website",u.getWebsite());
@@ -81,48 +95,9 @@ public class ContactFragment extends Fragment {
                     editor.commit();
                     CreateResumeDataActivity.viewPager2.setCurrentItem(2);
 
-//                    DataBase Code
-
-                    /*RequestQueue queue = Volley.newRequestQueue(getActivity());
-                    String url ="http://172.20.10.5/resumeit/create.php";
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    if(response.equals("Success")){
-                                        Toast.makeText(getActivity(), "Data Added!!", Toast.LENGTH_SHORT).show();
-                                    }else {
-                                        Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("Error",error.getLocalizedMessage());
-                        }
-                    }){
-                        protected Map<String, String> getParams(){
-                            Map<String, String> paramV = new HashMap<>();
-                            paramV.put("first_name", Email);
-                            paramV.put("last_name", MoNO);
-                            paramV.put("profession", Website);
-                            paramV.put("profession", Country);
-                            return paramV;
-                        }
-                    };
-                    queue.add(stringRequest);
-*/
-
-//                    Toast.makeText(getActivity(), ""+Email+"|"+Website+"|"+Country+"|"+MoNO, Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
-
-
-
         return view;
     }
 }

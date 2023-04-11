@@ -25,12 +25,15 @@ import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentEducationBinding;
 import com.example.resumemaker.databinding.FragmentWorkBinding;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class EducationFragment extends Fragment implements View.OnClickListener{
 
@@ -48,9 +51,45 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_education, container, false);
         binding = FragmentEducationBinding.inflate(inflater,container,false);
+
+        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor =sh.edit();
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<String>>() {}.getType();
+
+        String eA0 = sh.getString("eduArr0","");
+        List<String> eAL0 = gson.fromJson(eA0, type);
+        String eA1 = sh.getString("eduArr1","");
+        List<String> eAL1 = gson.fromJson(eA1, type);
+        String eA2 = sh.getString("eduArr2","");
+        List<String> eAL2 = gson.fromJson(eA2, type);
+
+        if(!String.valueOf(eAL0).equals(null)){
+            binding.EduCard0.setVisibility(View.VISIBLE);
+            binding.edCourseName0.setText(eAL0.get(0));
+            binding.edSclName0.setText(eAL0.get(1));
+            binding.edGrade0.setText(eAL0.get(2));
+            binding.edStartDate0.setText(eAL0.get(3));
+            binding.edEndDate0.setText(eAL0.get(4));
+        }
+        if(!String.valueOf(eAL1).equals(null)){
+            binding.EduCard1.setVisibility(View.VISIBLE);
+            binding.edCourseName1.setText(eAL1.get(0));
+            binding.edSclName1.setText(eAL1.get(1));
+            binding.edGrade1.setText(eAL1.get(2));
+            binding.edStartDate1.setText(eAL1.get(3));
+            binding.edEndDate1.setText(eAL1.get(4));
+        }
+        if(!String.valueOf(eAL2).equals(null)){
+            binding.EduCard2.setVisibility(View.VISIBLE);
+            binding.edCourseName2.setText(eAL2.get(0));
+            binding.edSclName2.setText(eAL2.get(1));
+            binding.edGrade2.setText(eAL2.get(2));
+            binding.edStartDate2.setText(eAL2.get(3));
+            binding.edEndDate2.setText(eAL2.get(4));
+        }
+
 
 
         binding.btnAddEdu.setOnClickListener(this);
@@ -132,21 +171,20 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 {
                                     Toast.makeText(getActivity(), "Start year is not bigger than End year", Toast.LENGTH_SHORT).show();
                                 }else {
-//                                    Code of DataBase
 //                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
                                 e1.printStackTrace();
                             }
                         }
-                        EducationModel e0 = new EducationModel(courseName0,sclName0,grade0,startDate0,endDate0);
+                        /*EducationModel e0 = new EducationModel(courseName0,sclName0,grade0,startDate0,endDate0);
                         e0.setCourseName(courseName0);
                         e0.setSclName(sclName0);
                         e0.setGrade(grade0);
                         e0.setStartDate(startDate0);
                         e0.setEndDate(endDate0);
                         eduList = new ArrayList<>();
-                        eduList.add(e0);
+                        eduList.add(e0);*/
 
                         eduArr0 = new ArrayList<String>();
                         eduArr0.add(courseName0);
@@ -154,10 +192,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                         eduArr0.add(grade0);
                         eduArr0.add(startDate0);
                         eduArr0.add(endDate0);
-                        Gson gson = new Gson();
                         String edu0 = gson.toJson(eduArr0);
-                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor =sh.edit();
                         editor.putString("eduArr0",edu0);
                         editor.commit();
                     }
@@ -189,7 +224,6 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 {
                                     Toast.makeText(getActivity(), "Start year is not bigger than End year", Toast.LENGTH_SHORT).show();
                                 }else {
-//                                    Code of DataBase
 //                                    Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (ParseException e1){
@@ -197,14 +231,14 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                             }
                         }
 
-                        EducationModel e1 = new EducationModel(courseName1,sclName1,grade1,startDate1,endDate1);
+                        /*EducationModel e1 = new EducationModel(courseName1,sclName1,grade1,startDate1,endDate1);
                         e1.setCourseName(courseName1);
                         e1.setSclName(sclName1);
                         e1.setGrade(grade1);
                         e1.setStartDate(startDate1);
                         e1.setEndDate(endDate1);
                         eduList = new ArrayList<>();
-                        eduList.add(e1);
+                        eduList.add(e1);*/
 
                         eduArr1 = new ArrayList<String>();
                         eduArr1.add(courseName1);
@@ -212,10 +246,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                         eduArr1.add(grade1);
                         eduArr1.add(startDate1);
                         eduArr1.add(endDate1);
-                        Gson gson = new Gson();
                         String edu1 = gson.toJson(eduArr1);
-                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor =sh.edit();
                         editor.putString("eduArr1",edu1);
                         editor.commit();
                     }
@@ -254,14 +285,14 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                             }
                         }
 //                        Code of DB
-                        EducationModel e2 = new EducationModel(courseName2,sclName2,grade2,startDate2,endDate2);
+                        /*EducationModel e2 = new EducationModel(courseName2,sclName2,grade2,startDate2,endDate2);
                         e2.setCourseName(courseName2);
                         e2.setSclName(sclName2);
                         e2.setGrade(grade2);
                         e2.setStartDate(startDate2);
                         e2.setEndDate(endDate2);
                         eduList = new ArrayList<>();
-                        eduList.add(e2);
+                        eduList.add(e2);*/
 
                         eduArr2 = new ArrayList<String>();
                         eduArr2.add(courseName2);
@@ -269,10 +300,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                         eduArr2.add(grade2);
                         eduArr2.add(startDate2);
                         eduArr2.add(endDate2);
-                        Gson gson = new Gson();
                         String edu2 = gson.toJson(eduArr2);
-                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor =sh.edit();
                         editor.putString("eduArr2",edu2);
                         editor.commit();
 

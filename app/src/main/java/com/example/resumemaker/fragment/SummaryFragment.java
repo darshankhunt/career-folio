@@ -26,9 +26,13 @@ public class SummaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_summary, container, false);
         binding = FragmentSummaryBinding.inflate(inflater,container,false);
+        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor =sh.edit();
+
+        String ob = sh.getString("objective","");
+        if(!ob.equals(""))
+            binding.edObjective.setText(ob);
 
         binding.btnSummarySave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,9 +47,6 @@ public class SummaryFragment extends Fragment {
 
                     UserModel u = new UserModel(objective);
                     u.setObjective(objective);
-
-                    SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor =sh.edit();
                     editor.putString("objective", u.getObjective());
                     editor.commit();
                     CreateResumeDataActivity.viewPager2.setCurrentItem(6);

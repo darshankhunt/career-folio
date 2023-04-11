@@ -13,19 +13,27 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.HomeSc;
+import com.example.resumemaker.Model.TestModel;
 import com.example.resumemaker.Model.UserModel;
+import com.example.resumemaker.Model.WorkModel;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentDoneBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -121,15 +129,24 @@ public class DoneFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                    Code of Database
-                UserModel u = new UserModel(resumeTemplateId);
+
+                SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor =sh.edit();
+                editor.putInt("ResumeTemplateId", resumeTemplateId);
+                editor.commit();
+
+               /* UserModel u = new UserModel(resumeTemplateId);
                 u.setResumeTemplateId(resumeTemplateId);
                 String resTemID = String.valueOf(resumeTemplateId);
                 SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor =sh.edit();
                 editor.putString("ResumeTemplateId", resTemID);
-                editor.commit();
+                editor.commit();*/
 
 //                Code of API
+
+
+
 
                 String first_name = sh.getString("first_name","");
                 String last_name = sh.getString("last_name","");
@@ -139,11 +156,23 @@ public class DoneFragment extends Fragment {
                 String Website = sh.getString("Website","");
                 String Country = sh.getString("Country","");
                 String objective = sh.getString("objective","");
-                String ResumeTemplateId = sh.getString("ResumeTemplateId","0");
+                int ResumeTemplateId = sh.getInt("ResumeTemplateId",0);
 
                 Gson gson = new Gson();
                 String jsonWorkArr0 = sh.getString("workArr0", "");
+                Type type = new TypeToken<List<String>>() {
+                }.getType();
+                List<String> workArr0 = gson.fromJson(jsonWorkArr0, type);
+                WorkModel work0 = new WorkModel(workArr0.get(0),workArr0.get(1),workArr0.get(2),workArr0.get(3),workArr0.get(4));
+
                 String jsonWorkArr1 = sh.getString("workArr1", "");
+                List<String> workArr1 = gson.fromJson(jsonWorkArr1, type);
+                WorkModel work1 = new WorkModel(workArr1.get(0),workArr1.get(1),workArr1.get(2),workArr1.get(3),workArr1.get(4));
+
+                List<WorkModel> arrWork = new ArrayList<>();
+                arrWork.add(work0);
+                arrWork.add(work1);
+
                 String jsonWorkArr2 = sh.getString("workArr2", "");
                 String jsonEduArr0 = sh.getString("eduArr0", "");
                 String jsonEduArr1 = sh.getString("eduArr1", "");
@@ -152,7 +181,8 @@ public class DoneFragment extends Fragment {
                 String jsonskillArr1 = sh.getString("skillArr1", "");
                 String jsonskillArr2 = sh.getString("skillArr2", "");
                 String jsonskillArr3 = sh.getString("skillArr3", "");
-                Type type = new TypeToken<ArrayList<String>>() {}.getType();
+
+               /* Type type = new TypeToken<ArrayList<String>>() {}.getType();
                 List<String> workArr0 = gson.fromJson(jsonWorkArr0, type);
                 List<String> workArr1 = gson.fromJson(jsonWorkArr1, type);
                 List<String> workArr2 = gson.fromJson(jsonWorkArr2, type);
@@ -162,14 +192,63 @@ public class DoneFragment extends Fragment {
                 List<String> skillArr0 = gson.fromJson(jsonskillArr0, type);
                 List<String> skillArr1 = gson.fromJson(jsonskillArr1, type);
                 List<String> skillArr2 = gson.fromJson(jsonskillArr2, type);
-                List<String> skillArr3 = gson.fromJson(jsonskillArr3, type);
+                List<String> skillArr3 = gson.fromJson(jsonskillArr3, type);*/
 
+
+                UserModel u = new UserModel(resumeTemplateId,first_name,last_name,profession,email,MoNO,Website,Country,objective,work1,arrWork);
+                u.setResumeTemplateId(ResumeTemplateId);
+                u.setfName(first_name);
+                u.setlName(last_name);
+                u.setProfession(profession);
+                u.setEmail(email);
+                u.setContactNumber(MoNO);
+                u.setWebsite(Website);
+                u.setCountry(Country);
+                u.setObjective(objective);
+                u.setWorkModel(work0);
+                u.setArrWork(arrWork);
+                Gson gsonFinal = new Gson();
+                String jsonFinal = gsonFinal.toJson(u);
+                editor.putString("FinalData",jsonFinal);
+                editor.commit();
 
 
                 RequestQueue queue = Volley.newRequestQueue(getActivity());
-                String url ="http://172.20.10.5/resumeit/create.php";
+                String url ="http://172.20.10.5/resumepdfapi/create.php";
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+//                String json = sh.getString("about", "");
+                String json = sh.getString("FinalData", "");
+                JSONObject jsonObject;
+                try {
+                     jsonObject=new JSONObject(json);
+                    Log.i("json",""+jsonObject);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+              /*  TestModel obj = gson1.fromJson(json, TestModel.class);
+                Toast.makeText(getActivity(), ""+obj.getfName(), Toast.LENGTH_SHORT).show();
+                Log.i("User",obj.getfName());*/
+
+
+              JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                               // Toast.makeText(getActivity(), ""+response, Toast.LENGTH_LONG).show();
+                                Log.i("API_responce", "onResponse: "+response);
+
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                       // Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.e("API_responce", "onError: "+error.getLocalizedMessage());
+
+                    }
+                });
+                /*StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -183,6 +262,7 @@ public class DoneFragment extends Fragment {
                     }
                 }){
                     protected Map<String, String> getParams(){
+
                         Map<String, String> paramV = new HashMap<>();
                         paramV.put("first_name",first_name);
                         paramV.put("last_name",last_name);
@@ -215,11 +295,11 @@ public class DoneFragment extends Fragment {
                         paramV.put("skillArr3", jsonSkill3);
                         return paramV;
                     }
-                };
-                queue.add(stringRequest);
+                };*/
+                queue.add(jsonObjectRequest);
 
 //                Remove data on shared preference file
-                editor.clear().apply();
+//                editor.clear().apply();
 
                 Intent intent = new Intent(getActivity(), HomeSc.class);
                 startActivity(intent);

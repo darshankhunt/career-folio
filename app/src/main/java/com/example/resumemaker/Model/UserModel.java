@@ -1,5 +1,7 @@
 package com.example.resumemaker.Model;
 
+import java.util.List;
+
 public class UserModel {
 
     private int resumeTemplateId;
@@ -8,6 +10,16 @@ public class UserModel {
     private EducationModel educationModel;
     private SkillModel skillModel;
 
+    private List<WorkModel> arrWork;
+
+
+    public List<WorkModel> getArrWork() {
+        return arrWork;
+    }
+
+    public void setArrWork(List<WorkModel> arrWork) {
+        this.arrWork = arrWork;
+    }
 
     public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, WorkModel workModel, EducationModel educationModel, SkillModel skillModel) {
         this.resumeTemplateId = resumeTemplateId;
@@ -24,7 +36,7 @@ public class UserModel {
         this.skillModel = skillModel;
     }
 
-    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective) {
+    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, WorkModel workModel, List<WorkModel> arrWork) {
         this.resumeTemplateId = resumeTemplateId;
         this.fName = fName;
         this.lName = lName;
@@ -34,6 +46,8 @@ public class UserModel {
         this.website = website;
         this.country = country;
         this.objective = objective;
+        this.workModel = workModel;
+        this.arrWork = arrWork;
     }
 
     public UserModel(String fName, String lName, String profession) {
