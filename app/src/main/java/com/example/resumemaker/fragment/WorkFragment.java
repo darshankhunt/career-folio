@@ -56,11 +56,11 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
     private boolean isChbPresent1 = false;
     private boolean isChbPresent2 = false;
 
-    private ArrayList<String> workArr0;
-    private ArrayList<String> workArr1;
-    private ArrayList<String> workArr2;
+    private ArrayList<WorkModel> workArr0;
+    private ArrayList<WorkModel> workArr1;
+    private ArrayList<WorkModel> workArr2;
 
-    private ArrayList<WorkModel> workList;
+    private ArrayList<WorkModel> workList=new ArrayList<>();
 
 
 
@@ -72,14 +72,14 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =sh.edit();
         Gson gson = new Gson();
-        Type type = new TypeToken<List<String>>() {}.getType();
-
+        Type type = new TypeToken<ArrayList<WorkModel>>() {}.getType();
         String wA0 = sh.getString("workArr0","");
-        List<String> wAL0 = gson.fromJson(wA0, type);
+        List<WorkModel> wAL0 = gson.fromJson(wA0, type);
         String wA1 = sh.getString("workArr1","");
-        List<String> wAL1 = gson.fromJson(wA1, type);
+        List<WorkModel> wAL1 = gson.fromJson(wA1, type);
         String wA2 = sh.getString("workArr2","");
-        List<String> wAL2 = gson.fromJson(wA2, type);
+        List<WorkModel> wAL2 = gson.fromJson(wA2, type);
+
 
         btnAddExp = view.findViewById(R.id.btnAddExp);
         btnWorkSave = view.findViewById(R.id.btnWorkSave);
@@ -116,32 +116,38 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
         chbPresentWorking2 = view.findViewById(R.id.chbPresentWorking2);
 
 
-        if(!String.valueOf(wAL0).equals(null)){
+        if(wAL0==null){
+            workCard0.setVisibility(View.GONE);
+        }else {
             workCard0.setVisibility(View.VISIBLE);
-            edCompanyName0.setText(wAL0.get(0));
-            edJobTitle0.setText(wAL0.get(1));
-            edStartDate0.setText(wAL0.get(2));
-            edEndDate0.setText(wAL0.get(3));
-            edWorkDesc0.setText(wAL0.get(4));
+            count++;
+            edCompanyName0.setText(wAL0.get(0).getCompanyName());
+            edJobTitle0.setText(wAL0.get(0).getJobTitle());
+            edStartDate0.setText(wAL0.get(0).getStartDate());
+            edEndDate0.setText(wAL0.get(0).getEndDate());
+            edWorkDesc0.setText(wAL0.get(0).getWorkDesc());
         }
-        if(String.valueOf(wAL1).equals(null)){
-        }else{
+        if(wAL1==null){
+            workCard1.setVisibility(View.GONE);
+        }else {
             workCard1.setVisibility(View.VISIBLE);
-            edCompanyName1.setText(wAL1.get(0));
-            edJobTitle1.setText(wAL1.get(1));
-            edStartDate1.setText(wAL1.get(2));
-            edEndDate1.setText(wAL1.get(3));
-            edWorkDesc1.setText(wAL1.get(4));
+            count++;
+            edCompanyName1.setText(wAL1.get(0).getCompanyName());
+            edJobTitle1.setText(wAL1.get(0).getJobTitle());
+            edStartDate1.setText(wAL1.get(0).getStartDate());
+            edEndDate1.setText(wAL1.get(0).getEndDate());
+            edWorkDesc1.setText(wAL1.get(0).getWorkDesc());
         }
-        if(String.valueOf(wAL2).equals(null)){
-            workCard2.setVisibility(View.INVISIBLE);
+        if(wAL2==null){
+            workCard2.setVisibility(View.GONE);
         }else {
             workCard2.setVisibility(View.VISIBLE);
-            edCompanyName2.setText(wAL2.get(0));
-            edJobTitle2.setText(wAL2.get(1));
-            edStartDate2.setText(wAL2.get(2));
-            edEndDate2.setText(wAL2.get(3));
-            edWorkDesc2.setText(wAL2.get(4));
+            count++;
+            edCompanyName2.setText(wAL2.get(0).getCompanyName());
+            edJobTitle2.setText(wAL2.get(0).getJobTitle());
+            edStartDate2.setText(wAL2.get(0).getStartDate());
+            edEndDate2.setText(wAL2.get(0).getEndDate());
+            edWorkDesc2.setText(wAL2.get(0).getWorkDesc());
         }
 
 
@@ -237,24 +243,24 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                             }
                         }
 
-                        /*WorkModel w0 = new WorkModel(companyName0,jobTitle0,startDate0,endDate0,workDesc0);
+                        WorkModel w0 = new WorkModel(companyName0,jobTitle0,startDate0,endDate0,workDesc0);
                         w0.setCompanyName(companyName0);
                         w0.setJobTitle(jobTitle0);
                         w0.setStartDate(startDate0);
                         w0.setEndDate(endDate0);
                         w0.setWorkDesc(workDesc0);
-                        workList = new ArrayList<>();
-                        workList.add(w0);*/
-
-                        workArr0 = new ArrayList<String>();
-                        workArr0.add(companyName0);
-                        workArr0.add(jobTitle0);
-                        workArr0.add(startDate0);
-                        workArr0.add(endDate0);
-                        workArr0.add(workDesc0);
-                        String work0 = gson.toJson(workArr0);
-                        editor.putString("workArr0", work0);
+                        workList.add(w0);
+                        String work0 = gson.toJson(workList);
+                        editor.putString("workList", work0);
                         editor.commit();
+
+                        workArr0 = new ArrayList<WorkModel>();
+                        workArr0.add(w0);
+                        String wor0 = gson.toJson(workArr0);
+                        editor.putString("workArr0", wor0);
+                        editor.commit();
+
+
                     }
                 }
 
@@ -291,24 +297,22 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                             }
                         }
 
-                        /*WorkModel w1 = new WorkModel(companyName1,jobTitle1,startDate1,endDate1,workDesc1);
+                        WorkModel w1 = new WorkModel(companyName1,jobTitle1,startDate1,endDate1,workDesc1);
                         w1.setCompanyName(companyName1);
                         w1.setJobTitle(jobTitle1);
                         w1.setStartDate(startDate1);
                         w1.setEndDate(endDate1);
                         w1.setWorkDesc(workDesc1);
-                        workList = new ArrayList<>();
-                        workList.add(w1);*/
+                        workList.add(w1);
+                        String work1 = gson.toJson(workList);
+                        editor.putString("workList",work1);
 
-                        workArr1 = new ArrayList<String>();
-                        workArr1.add(companyName1);
-                        workArr1.add(jobTitle1);
-                        workArr1.add(startDate1);
-                        workArr1.add(endDate1);
-                        workArr1.add(workDesc1);
-                        String work1 = gson.toJson(workArr1);
-                        editor.putString("workArr1",work1);
+                        workArr1 = new ArrayList<WorkModel>();
+                        workArr1.add(w1);
+                        String wor1 = gson.toJson(workArr1);
+                        editor.putString("workArr1", wor1);
                         editor.commit();
+
                     }
                 }
 
@@ -345,25 +349,25 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                             }
                         }
 
-                        /*WorkModel w2 = new WorkModel(companyName2,jobTitle2,startDate2,endDate2,workDesc2);
+                        WorkModel w2 = new WorkModel(companyName2,jobTitle2,startDate2,endDate2,workDesc2);
                         w2.setCompanyName(companyName2);
                         w2.setJobTitle(jobTitle2);
                         w2.setStartDate(startDate2);
                         w2.setEndDate(endDate2);
                         w2.setWorkDesc(workDesc2);
-                        workList = new ArrayList<>();
-                        workList.add(w2);*/
-
-                        workArr2 = new ArrayList<String>();
-                        workArr2.add(companyName2);
-                        workArr2.add(jobTitle2);
-                        workArr2.add(startDate2);
-                        workArr2.add(endDate2);
-                        workArr2.add(workDesc2);
-                        String work2 = gson.toJson(workArr2);
-                        editor.putString("workArr2",work2);
+                        workList.add(w2);
+                        String work2 = gson.toJson(workList);
+                        editor.putString("workList",work2);
                         editor.commit();
+
+                        workArr2 = new ArrayList<WorkModel>();
+                        workArr2.add(w2);
+                        String wor2 = gson.toJson(workArr2);
+                        editor.putString("workArr2", wor2);
+                        editor.commit();
+
                     }
+
                 }
 
                 CreateResumeDataActivity.viewPager2.setCurrentItem(3);

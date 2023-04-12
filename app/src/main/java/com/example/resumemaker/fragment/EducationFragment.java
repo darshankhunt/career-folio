@@ -43,11 +43,11 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
     private boolean isChbPresent1 = false;
     private boolean isChbPresent2 = false;
 
-    private ArrayList<String> eduArr0;
-    private ArrayList<String> eduArr1;
-    private ArrayList<String> eduArr2;
+    private ArrayList<EducationModel> eduArr0;
+    private ArrayList<EducationModel> eduArr1;
+    private ArrayList<EducationModel> eduArr2;
 
-    private ArrayList<EducationModel> eduList;
+    private ArrayList<EducationModel> eduList=new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,40 +56,48 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =sh.edit();
         Gson gson = new Gson();
-        Type type = new TypeToken<List<String>>() {}.getType();
+        Type type = new TypeToken<List<EducationModel>>() {}.getType();
 
         String eA0 = sh.getString("eduArr0","");
-        List<String> eAL0 = gson.fromJson(eA0, type);
+        List<EducationModel> eAL0 = gson.fromJson(eA0, type);
         String eA1 = sh.getString("eduArr1","");
-        List<String> eAL1 = gson.fromJson(eA1, type);
+        List<EducationModel> eAL1 = gson.fromJson(eA1, type);
         String eA2 = sh.getString("eduArr2","");
-        List<String> eAL2 = gson.fromJson(eA2, type);
+        List<EducationModel> eAL2 = gson.fromJson(eA2, type);
 
-        if(!String.valueOf(eAL0).equals(null)){
+        if(eAL0==null){
+            binding.EduCard0.setVisibility(View.GONE);
+        }else {
             binding.EduCard0.setVisibility(View.VISIBLE);
-            binding.edCourseName0.setText(eAL0.get(0));
-            binding.edSclName0.setText(eAL0.get(1));
-            binding.edGrade0.setText(eAL0.get(2));
-            binding.edStartDate0.setText(eAL0.get(3));
-            binding.edEndDate0.setText(eAL0.get(4));
+            count++;
+            binding.edCourseName0.setText(eAL0.get(0).getCourseName());
+            binding.edSclName0.setText(eAL0.get(0).getSclName());
+            binding.edGrade0.setText(eAL0.get(0).getGrade());
+            binding.edStartDate0.setText(eAL0.get(0).getStartDate());
+            binding.edEndDate0.setText(eAL0.get(0).getEndDate());
         }
-        if(!String.valueOf(eAL1).equals(null)){
+        if(eAL1==null){
+            binding.EduCard1.setVisibility(View.GONE);
+        }else {
             binding.EduCard1.setVisibility(View.VISIBLE);
-            binding.edCourseName1.setText(eAL1.get(0));
-            binding.edSclName1.setText(eAL1.get(1));
-            binding.edGrade1.setText(eAL1.get(2));
-            binding.edStartDate1.setText(eAL1.get(3));
-            binding.edEndDate1.setText(eAL1.get(4));
+            count++;
+            binding.edCourseName1.setText(eAL1.get(0).getCourseName());
+            binding.edSclName1.setText(eAL1.get(0).getSclName());
+            binding.edGrade1.setText(eAL1.get(0).getGrade());
+            binding.edStartDate1.setText(eAL1.get(0).getStartDate());
+            binding.edEndDate1.setText(eAL1.get(0).getEndDate());
         }
-        if(!String.valueOf(eAL2).equals(null)){
+        if(eAL2==null){
+            binding.EduCard2.setVisibility(View.GONE);
+        }else {
             binding.EduCard2.setVisibility(View.VISIBLE);
-            binding.edCourseName2.setText(eAL2.get(0));
-            binding.edSclName2.setText(eAL2.get(1));
-            binding.edGrade2.setText(eAL2.get(2));
-            binding.edStartDate2.setText(eAL2.get(3));
-            binding.edEndDate2.setText(eAL2.get(4));
+            count++;
+            binding.edCourseName2.setText(eAL2.get(0).getCourseName());
+            binding.edSclName2.setText(eAL2.get(0).getSclName());
+            binding.edGrade2.setText(eAL2.get(0).getGrade());
+            binding.edStartDate2.setText(eAL2.get(0).getStartDate());
+            binding.edEndDate2.setText(eAL2.get(0).getEndDate());
         }
-
 
 
         binding.btnAddEdu.setOnClickListener(this);
@@ -177,23 +185,23 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                                 e1.printStackTrace();
                             }
                         }
-                        /*EducationModel e0 = new EducationModel(courseName0,sclName0,grade0,startDate0,endDate0);
+
+                        EducationModel e0 = new EducationModel(courseName0,sclName0,grade0,startDate0,endDate0);
                         e0.setCourseName(courseName0);
                         e0.setSclName(sclName0);
                         e0.setGrade(grade0);
                         e0.setStartDate(startDate0);
                         e0.setEndDate(endDate0);
                         eduList = new ArrayList<>();
-                        eduList.add(e0);*/
+                        eduList.add(e0);
+                        String edu0 = gson.toJson(eduList);
+                        editor.putString("eduList", edu0);
+                        editor.commit();
 
-                        eduArr0 = new ArrayList<String>();
-                        eduArr0.add(courseName0);
-                        eduArr0.add(sclName0);
-                        eduArr0.add(grade0);
-                        eduArr0.add(startDate0);
-                        eduArr0.add(endDate0);
-                        String edu0 = gson.toJson(eduArr0);
-                        editor.putString("eduArr0",edu0);
+                        eduArr0 = new ArrayList<EducationModel>();
+                        eduArr0.add(e0);
+                        String ed0 = gson.toJson(eduArr0);
+                        editor.putString("eduArr0",ed0);
                         editor.commit();
                     }
                 }
@@ -231,23 +239,21 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                             }
                         }
 
-                        /*EducationModel e1 = new EducationModel(courseName1,sclName1,grade1,startDate1,endDate1);
+                        EducationModel e1 = new EducationModel(courseName1,sclName1,grade1,startDate1,endDate1);
                         e1.setCourseName(courseName1);
                         e1.setSclName(sclName1);
                         e1.setGrade(grade1);
                         e1.setStartDate(startDate1);
                         e1.setEndDate(endDate1);
                         eduList = new ArrayList<>();
-                        eduList.add(e1);*/
+                        eduList.add(e1);
+                        String edu1 = gson.toJson(eduList);
+                        editor.putString("eduList",edu1);
 
-                        eduArr1 = new ArrayList<String>();
-                        eduArr1.add(courseName1);
-                        eduArr1.add(sclName1);
-                        eduArr1.add(grade1);
-                        eduArr1.add(startDate1);
-                        eduArr1.add(endDate1);
-                        String edu1 = gson.toJson(eduArr1);
-                        editor.putString("eduArr1",edu1);
+                        eduArr1 = new ArrayList<EducationModel>();
+                        eduArr1.add(e1);
+                        String ed1 = gson.toJson(eduArr1);
+                        editor.putString("eduArr1",ed1);
                         editor.commit();
                     }
                 }
@@ -285,23 +291,22 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                             }
                         }
 //                        Code of DB
-                        /*EducationModel e2 = new EducationModel(courseName2,sclName2,grade2,startDate2,endDate2);
+                        EducationModel e2 = new EducationModel(courseName2,sclName2,grade2,startDate2,endDate2);
                         e2.setCourseName(courseName2);
                         e2.setSclName(sclName2);
                         e2.setGrade(grade2);
                         e2.setStartDate(startDate2);
                         e2.setEndDate(endDate2);
                         eduList = new ArrayList<>();
-                        eduList.add(e2);*/
+                        eduList.add(e2);
+                        String edu2 = gson.toJson(eduList);
+                        editor.putString("weduList",edu2);
+                        editor.commit();
 
-                        eduArr2 = new ArrayList<String>();
-                        eduArr2.add(courseName2);
-                        eduArr2.add(sclName2);
-                        eduArr2.add(grade2);
-                        eduArr2.add(startDate2);
-                        eduArr2.add(endDate2);
-                        String edu2 = gson.toJson(eduArr2);
-                        editor.putString("eduArr2",edu2);
+                        eduArr2 = new ArrayList<EducationModel>();
+                        eduArr2.add(e2);
+                        String ed2 = gson.toJson(eduArr2);
+                        editor.putString("eduArr2",ed2);
                         editor.commit();
 
                     }

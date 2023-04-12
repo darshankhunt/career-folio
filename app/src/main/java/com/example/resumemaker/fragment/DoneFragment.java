@@ -9,25 +9,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.HomeSc;
-import com.example.resumemaker.Model.TestModel;
 import com.example.resumemaker.Model.UserModel;
 import com.example.resumemaker.Model.WorkModel;
-import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentDoneBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,9 +30,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DoneFragment extends Fragment {
 
@@ -159,19 +150,19 @@ public class DoneFragment extends Fragment {
                 int ResumeTemplateId = sh.getInt("ResumeTemplateId",0);
 
                 Gson gson = new Gson();
-                String jsonWorkArr0 = sh.getString("workArr0", "");
-                Type type = new TypeToken<List<String>>() {
+                String jsonWorkArr = sh.getString("workList", "");
+                Type type = new TypeToken<List<WorkModel>>() {
                 }.getType();
-                List<String> workArr0 = gson.fromJson(jsonWorkArr0, type);
-                WorkModel work0 = new WorkModel(workArr0.get(0),workArr0.get(1),workArr0.get(2),workArr0.get(3),workArr0.get(4));
+                List<WorkModel> workList = gson.fromJson(jsonWorkArr, type);
+//                WorkModel workListFinal = new WorkModel();
 
-                String jsonWorkArr1 = sh.getString("workArr1", "");
+                /*String jsonWorkArr1 = sh.getString("workArr1", "");
                 List<String> workArr1 = gson.fromJson(jsonWorkArr1, type);
-                WorkModel work1 = new WorkModel(workArr1.get(0),workArr1.get(1),workArr1.get(2),workArr1.get(3),workArr1.get(4));
+                WorkModel work1 = new WorkModel(workArr1.get(0),workArr1.get(1),workArr1.get(2),workArr1.get(3),workArr1.get(4));*/
 
                 List<WorkModel> arrWork = new ArrayList<>();
-                arrWork.add(work0);
-                arrWork.add(work1);
+//                arrWork.add(work0);
+//                arrWork.add(work1);
 
                 String jsonWorkArr2 = sh.getString("workArr2", "");
                 String jsonEduArr0 = sh.getString("eduArr0", "");
@@ -195,7 +186,7 @@ public class DoneFragment extends Fragment {
                 List<String> skillArr3 = gson.fromJson(jsonskillArr3, type);*/
 
 
-                UserModel u = new UserModel(resumeTemplateId,first_name,last_name,profession,email,MoNO,Website,Country,objective,work1,arrWork);
+                UserModel u = new UserModel(resumeTemplateId,first_name,last_name,profession,email,MoNO,Website,Country,objective,workList);
                 u.setResumeTemplateId(ResumeTemplateId);
                 u.setfName(first_name);
                 u.setlName(last_name);
@@ -205,8 +196,7 @@ public class DoneFragment extends Fragment {
                 u.setWebsite(Website);
                 u.setCountry(Country);
                 u.setObjective(objective);
-                u.setWorkModel(work0);
-                u.setArrWork(arrWork);
+                u.setWorkList(workList);
                 Gson gsonFinal = new Gson();
                 String jsonFinal = gsonFinal.toJson(u);
                 editor.putString("FinalData",jsonFinal);

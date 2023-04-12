@@ -10,15 +10,15 @@ public class UserModel {
     private EducationModel educationModel;
     private SkillModel skillModel;
 
-    private List<WorkModel> arrWork;
+    private List<WorkModel> workList;
 
 
-    public List<WorkModel> getArrWork() {
-        return arrWork;
+    public List<WorkModel> getWorkList() {
+        return workList;
     }
 
-    public void setArrWork(List<WorkModel> arrWork) {
-        this.arrWork = arrWork;
+    public void setWorkList(List<WorkModel> workList) {
+        this.workList = workList;
     }
 
     public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, WorkModel workModel, EducationModel educationModel, SkillModel skillModel) {
@@ -36,7 +36,7 @@ public class UserModel {
         this.skillModel = skillModel;
     }
 
-    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, WorkModel workModel, List<WorkModel> arrWork) {
+    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, List<WorkModel> workList) {
         this.resumeTemplateId = resumeTemplateId;
         this.fName = fName;
         this.lName = lName;
@@ -46,8 +46,7 @@ public class UserModel {
         this.website = website;
         this.country = country;
         this.objective = objective;
-        this.workModel = workModel;
-        this.arrWork = arrWork;
+        this.workList = workList;
     }
 
     public UserModel(String fName, String lName, String profession) {

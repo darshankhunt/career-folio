@@ -15,12 +15,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.Model.SkillModel;
+import com.example.resumemaker.Model.WorkModel;
 import com.example.resumemaker.R;
 import com.example.resumemaker.databinding.FragmentEducationBinding;
 import com.example.resumemaker.databinding.FragmentSkillsBinding;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SkillsFragment extends Fragment implements View.OnClickListener{
 
@@ -28,24 +32,76 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
     private static int count = 0;
 
     FragmentSkillsBinding binding;
-    private String  skillLevel0="Intermediate";
+    private String skillLevel0="Intermediate";
     private String  skillLevel1="Intermediate";
     private String  skillLevel2="Intermediate";
     private String  skillLevel3="Intermediate";
 
-    private ArrayList<String> skillArr0;
-    private ArrayList<String> skillArr1;
-    private ArrayList<String> skillArr2;
-    private ArrayList<String> skillArr3;
+    private ArrayList<SkillModel> skillArr0;
+    private ArrayList<SkillModel> skillArr1;
+    private ArrayList<SkillModel> skillArr2;
+    private ArrayList<SkillModel> skillArr3;
 
-    private ArrayList<SkillModel> skillList;
+    private ArrayList<SkillModel> skillList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_skills, container, false);
+
         binding = FragmentSkillsBinding.inflate(inflater,container,false);
+        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor =sh.edit();
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<SkillModel>>() {}.getType();
+        String sA0 = sh.getString("skillArr0","");
+        List<SkillModel> sAL0 = gson.fromJson(sA0, type);
+        String sA1 = sh.getString("skillArr1","");
+        List<SkillModel> sAL1 = gson.fromJson(sA1, type);
+        String sA2 = sh.getString("skillArr2","");
+        List<SkillModel> sAL2 = gson.fromJson(sA2, type);
+        String sA3 = sh.getString("skillArr3","");
+        List<SkillModel> sAL3 = gson.fromJson(sA3, type);
+
+
+        if(sAL0==null){
+            binding.SkillCard0.setVisibility(View.GONE);
+        }else {
+            binding.SkillCard0.setVisibility(View.VISIBLE);
+            count++;
+            binding.edSkillName0.setText(sAL0.get(0).getSkill());
+            String value = sAL0.get(0).getSkillLevel();
+            if(value=="Beginner"){
+                binding.rBeginner0.setChecked(true);
+            }else if(value=="Intermediate"){
+                binding.rIntermediate0.setChecked(true);
+            }else if(value=="Advanced"){
+                binding.rAdvanced0.setChecked(true);
+            }else if(value=="Expert"){
+                binding.rExpert0.setChecked(true);
+            }
+        }
+        if(sAL1==null){
+            binding.SkillCard1.setVisibility(View.GONE);
+        }else {
+            binding.SkillCard1.setVisibility(View.VISIBLE);
+            count++;
+            binding.edSkillName1.setText(sAL1.get(0).getSkill());
+
+        }
+        if(sAL2==null){
+            binding.SkillCard2.setVisibility(View.GONE);
+        }else {
+            binding.SkillCard2.setVisibility(View.VISIBLE);
+            count++;
+            binding.edSkillName2.setText(sAL2.get(0).getSkill());
+        }
+        if(sAL3==null){
+            binding.SkillCard3.setVisibility(View.GONE);
+        }else {
+            binding.SkillCard3.setVisibility(View.VISIBLE);
+            count++;
+            binding.edSkillName3.setText(sAL3.get(0).getSkill());
+        }
 
         binding.btnAddSkills.setOnClickListener(this);
         binding.btnRemoveCard0.setOnClickListener(this);
@@ -57,12 +113,12 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
         binding.btnSkillSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(binding.SkillCard0.getVisibility() == View.VISIBLE){
                     String skill0 = binding.edSkillName0.getText().toString().trim();
                     binding.rgSkill0.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
+
                             if(checkedId == R.id.rBeginner0){
                                 skillLevel0 = "Beginner";
                             } else if (checkedId == R.id.rIntermediate0) {
@@ -85,18 +141,15 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         s0.setSkillLevel(skillLevel0);
                         skillList = new ArrayList<>();
                         skillList.add(s0);
-
-                        skillArr0 = new ArrayList<String>();
-                        skillArr0.add(skill0);
-                        skillArr0.add(skillLevel0);
-                        Gson gson = new Gson();
-                        String sj0 = gson.toJson(skillArr0);
-                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor =sh.edit();
-                        editor.putString("skillArr0",sj0);
+                        String skil0 = gson.toJson(skillList);
+                        editor.putString("skillList", skil0);
                         editor.commit();
 
-//                        Toast.makeText(getActivity(), ""+skill0+skillLevel0, Toast.LENGTH_SHORT).show();
+                        skillArr0 = new ArrayList<SkillModel>();
+                        skillArr0.add(s0);
+                        String sj0 = gson.toJson(skillArr0);
+                        editor.putString("skillArr0",sj0);
+                        editor.commit();
                     }
                 }
 
@@ -127,17 +180,16 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         s1.setSkillLevel(skillLevel1);
                         skillList = new ArrayList<>();
                         skillList.add(s1);
+                        String skil1 = gson.toJson(skillList);
+                        editor.putString("skillList", skil1);
+                        editor.commit();
 
-                        skillArr1 = new ArrayList<String>();
-                        skillArr1.add(skill1);
-                        skillArr1.add(skillLevel1);
-                        Gson gson = new Gson();
+                        skillArr1 = new ArrayList<SkillModel>();
+                        skillArr1.add(s1);
                         String sj1 = gson.toJson(skillArr1);
-                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor =sh.edit();
                         editor.putString("skillArr1",sj1);
                         editor.commit();
-//                        Toast.makeText(getActivity(), ""+skill1+skillLevel1, Toast.LENGTH_SHORT).show();
+
                     }
                 }
 
@@ -168,17 +220,15 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         s2.setSkillLevel(skillLevel2);
                         skillList = new ArrayList<>();
                         skillList.add(s2);
+                        String skil2 = gson.toJson(skillList);
+                        editor.putString("skillList", skil2);
+                        editor.commit();
 
-                        skillArr2 = new ArrayList<String>();
-                        skillArr2.add(skill2);
-                        skillArr2.add(skillLevel2);
-                        Gson gson = new Gson();
+                        skillArr2 = new ArrayList<SkillModel>();
+                        skillArr2.add(s2);
                         String sj2 = gson.toJson(skillArr2);
-                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor =sh.edit();
                         editor.putString("skillArr2",sj2);
                         editor.commit();
-//                        Toast.makeText(getActivity(), ""+skill2+skillLevel2, Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -209,17 +259,15 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         s3.setSkillLevel(skillLevel3);
                         skillList = new ArrayList<>();
                         skillList.add(s3);
+                        String skil3 = gson.toJson(skillList);
+                        editor.putString("skillList", skil3);
+                        editor.commit();
 
-                        skillArr3 = new ArrayList<String>();
-                        skillArr3.add(skill3);
-                        skillArr3.add(skillLevel3);
-                        Gson gson = new Gson();
+                        skillArr3 = new ArrayList<SkillModel>();
+                        skillArr3.add(s3);
                         String sj3 = gson.toJson(skillArr3);
-                        SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor =sh.edit();
                         editor.putString("skillArr3",sj3);
                         editor.commit();
-//                        Toast.makeText(getActivity(), ""+skill3+skillLevel3, Toast.LENGTH_SHORT).show();
                     }
                 }
 
