@@ -42,7 +42,7 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
     private ArrayList<SkillModel> skillArr2;
     private ArrayList<SkillModel> skillArr3;
 
-    private ArrayList<SkillModel> skillList = new ArrayList<>();
+    private ArrayList<SkillModel> skillList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,12 +113,12 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
         binding.btnSkillSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                skillList = new ArrayList<>();
                 if(binding.SkillCard0.getVisibility() == View.VISIBLE){
                     String skill0 = binding.edSkillName0.getText().toString().trim();
                     binding.rgSkill0.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
-
                             if(checkedId == R.id.rBeginner0){
                                 skillLevel0 = "Beginner";
                             } else if (checkedId == R.id.rIntermediate0) {
@@ -139,7 +139,6 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         SkillModel s0 = new SkillModel(skill0,skillLevel0);
                         s0.setSkill(skill0);
                         s0.setSkillLevel(skillLevel0);
-                        skillList = new ArrayList<>();
                         skillList.add(s0);
                         String skil0 = gson.toJson(skillList);
                         editor.putString("skillList", skil0);
@@ -178,7 +177,6 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         SkillModel s1 = new SkillModel(skill1,skillLevel1);
                         s1.setSkill(skill1);
                         s1.setSkillLevel(skillLevel1);
-                        skillList = new ArrayList<>();
                         skillList.add(s1);
                         String skil1 = gson.toJson(skillList);
                         editor.putString("skillList", skil1);
@@ -218,7 +216,6 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         SkillModel s2 = new SkillModel(skill2,skillLevel2);
                         s2.setSkill(skill2);
                         s2.setSkillLevel(skillLevel2);
-                        skillList = new ArrayList<>();
                         skillList.add(s2);
                         String skil2 = gson.toJson(skillList);
                         editor.putString("skillList", skil2);
@@ -257,7 +254,6 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         SkillModel s3 = new SkillModel(skill3,skillLevel3);
                         s3.setSkill(skill3);
                         s3.setSkillLevel(skillLevel3);
-                        skillList = new ArrayList<>();
                         skillList.add(s3);
                         String skil3 = gson.toJson(skillList);
                         editor.putString("skillList", skil3);
@@ -269,6 +265,17 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                         editor.putString("skillArr3",sj3);
                         editor.commit();
                     }
+                }
+
+
+                if(binding.SkillCard0.getVisibility() == View.VISIBLE || binding.SkillCard1.getVisibility() == View.VISIBLE || binding.SkillCard2.getVisibility() == View.VISIBLE || binding.SkillCard3.getVisibility() == View.VISIBLE){
+                }else{
+//                    Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
+                    skillList.removeAll(skillList);
+                    String skillNull = "";
+                    skillNull = gson.toJson(skillList);
+                    editor.putString("skillList",skillNull);
+                    editor.commit();
                 }
 
                 CreateResumeDataActivity.viewPager2.setCurrentItem(5);

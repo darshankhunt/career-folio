@@ -47,7 +47,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
     private ArrayList<EducationModel> eduArr1;
     private ArrayList<EducationModel> eduArr2;
 
-    private ArrayList<EducationModel> eduList=new ArrayList<>();
+    private ArrayList<EducationModel>  eduList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -152,6 +152,7 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
         binding.btnEduSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                eduList=new ArrayList<>();
 
                 if(binding.EduCard0.getVisibility() == View.VISIBLE){
                     String courseName0 = binding.edCourseName0.getText().toString().trim();
@@ -192,7 +193,6 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                         e0.setGrade(grade0);
                         e0.setStartDate(startDate0);
                         e0.setEndDate(endDate0);
-                        eduList = new ArrayList<>();
                         eduList.add(e0);
                         String edu0 = gson.toJson(eduList);
                         editor.putString("eduList", edu0);
@@ -245,7 +245,6 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                         e1.setGrade(grade1);
                         e1.setStartDate(startDate1);
                         e1.setEndDate(endDate1);
-                        eduList = new ArrayList<>();
                         eduList.add(e1);
                         String edu1 = gson.toJson(eduList);
                         editor.putString("eduList",edu1);
@@ -297,10 +296,9 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
                         e2.setGrade(grade2);
                         e2.setStartDate(startDate2);
                         e2.setEndDate(endDate2);
-                        eduList = new ArrayList<>();
                         eduList.add(e2);
                         String edu2 = gson.toJson(eduList);
-                        editor.putString("weduList",edu2);
+                        editor.putString("eduList",edu2);
                         editor.commit();
 
                         eduArr2 = new ArrayList<EducationModel>();
@@ -311,6 +309,17 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
 
                     }
                 }
+
+                if(binding.EduCard0.getVisibility() == View.VISIBLE || binding.EduCard1.getVisibility() == View.VISIBLE || binding.EduCard2.getVisibility() == View.VISIBLE){
+                }else{
+//                    Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
+                    eduList.removeAll(eduList);
+                    String eduNull = "";
+                    eduNull = gson.toJson(eduList);
+                    editor.putString("eduList",eduNull);
+                    editor.commit();
+                }
+
 
                 CreateResumeDataActivity.viewPager2.setCurrentItem(4);
             }

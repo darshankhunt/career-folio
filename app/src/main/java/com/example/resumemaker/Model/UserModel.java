@@ -11,7 +11,49 @@ public class UserModel {
     private SkillModel skillModel;
 
     private List<WorkModel> workList;
+    private List<EducationModel> eduList;
+    private List<SkillModel> skillList;
 
+
+    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, List<WorkModel> workList, List<EducationModel> eduList, List<SkillModel> skillList) {
+        this.resumeTemplateId = resumeTemplateId;
+        this.fName = fName;
+        this.lName = lName;
+        this.profession = profession;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.website = website;
+        this.country = country;
+        this.objective = objective;
+        this.workList = workList;
+        this.eduList = eduList;
+        this.skillList = skillList;
+    }
+
+
+    public UserModel(String email, String contactNumber, String website, String country) {
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.website = website;
+        this.country = country;
+    }
+
+
+    public List<EducationModel> getEduList() {
+        return eduList;
+    }
+
+    public void setEduList(List<EducationModel> eduList) {
+        this.eduList = eduList;
+    }
+
+    public List<SkillModel> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(List<SkillModel> skillList) {
+        this.skillList = skillList;
+    }
 
     public List<WorkModel> getWorkList() {
         return workList;
@@ -21,58 +63,11 @@ public class UserModel {
         this.workList = workList;
     }
 
-    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, WorkModel workModel, EducationModel educationModel, SkillModel skillModel) {
-        this.resumeTemplateId = resumeTemplateId;
-        this.fName = fName;
-        this.lName = lName;
-        this.profession = profession;
-        this.email = email;
-        this.contactNumber = contactNumber;
-        this.website = website;
-        this.country = country;
-        this.objective = objective;
-        this.workModel = workModel;
-        this.educationModel = educationModel;
-        this.skillModel = skillModel;
-    }
-
-    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, List<WorkModel> workList) {
-        this.resumeTemplateId = resumeTemplateId;
-        this.fName = fName;
-        this.lName = lName;
-        this.profession = profession;
-        this.email = email;
-        this.contactNumber = contactNumber;
-        this.website = website;
-        this.country = country;
-        this.objective = objective;
-        this.workList = workList;
-    }
-
-    public UserModel(String fName, String lName, String profession) {
-        this.fName = fName;
-        this.lName = lName;
-        this.profession = profession;
-    }
-
-    public UserModel(String email, String contactNumber, String website, String country) {
-        this.email = email;
-        this.contactNumber = contactNumber;
-        this.website = website;
-        this.country = country;
-    }
-
     public UserModel(String objective) {
         this.objective = objective;
     }
 
-    public UserModel(int resumeTemplateId) {
-        this.resumeTemplateId = resumeTemplateId;
-    }
 
-    //    public UserModel(String resumeTemplateId){
-//        this.resumeTemplateId = resumeTemplateId;
-//    }
 
     public String getfName() {
         return fName;

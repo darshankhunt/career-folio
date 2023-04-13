@@ -60,7 +60,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
     private ArrayList<WorkModel> workArr1;
     private ArrayList<WorkModel> workArr2;
 
-    private ArrayList<WorkModel> workList=new ArrayList<>();
+    private ArrayList<WorkModel> workList;
 
 
 
@@ -209,6 +209,7 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
         btnWorkSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                workList=new ArrayList<>();
 
                 if(workCard0.getVisibility() == View.VISIBLE){
                     String companyName0 = edCompanyName0.getText().toString().trim();
@@ -259,7 +260,6 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                         String wor0 = gson.toJson(workArr0);
                         editor.putString("workArr0", wor0);
                         editor.commit();
-
 
                     }
                 }
@@ -369,6 +369,17 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
                     }
 
                 }
+
+                if(workCard2.getVisibility() == View.VISIBLE || workCard1.getVisibility() == View.VISIBLE || workCard0.getVisibility() == View.VISIBLE){
+                }else{
+//                    Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
+                    workList.removeAll(workList);
+                    String workNull = "";
+                    workNull = gson.toJson(workList);
+                    editor.putString("workList",workNull);
+                    editor.commit();
+                }
+
 
                 CreateResumeDataActivity.viewPager2.setCurrentItem(3);
             }
