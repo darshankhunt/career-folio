@@ -308,7 +308,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/textView11"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@color/purple_500" />
+                tools:srcCompat="@mipmap/im10" />
 
             <ImageView
                 android:id="@+id/imageView2"
