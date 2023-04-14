@@ -57,8 +57,6 @@ public class DoneFragment extends Fragment {
                     binding.resumeTemplateCard0.setCardBackgroundColor(Color.GRAY);
                     binding.resumeTemplateCard1.setCardBackgroundColor(Color.WHITE);
                     binding.resumeTemplateCard2.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard3.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard4.setCardBackgroundColor(Color.WHITE);
                     resumeTemplateId=0;
                 }
             }
@@ -71,8 +69,6 @@ public class DoneFragment extends Fragment {
                     binding.resumeTemplateCard0.setCardBackgroundColor(Color.WHITE);
                     binding.resumeTemplateCard1.setCardBackgroundColor(Color.GRAY);
                     binding.resumeTemplateCard2.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard3.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard4.setCardBackgroundColor(Color.WHITE);
                     resumeTemplateId=1;
                 }
             }
@@ -85,37 +81,7 @@ public class DoneFragment extends Fragment {
                     binding.resumeTemplateCard0.setCardBackgroundColor(Color.WHITE);
                     binding.resumeTemplateCard1.setCardBackgroundColor(Color.WHITE);
                     binding.resumeTemplateCard2.setCardBackgroundColor(Color.GRAY);
-                    binding.resumeTemplateCard3.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard4.setCardBackgroundColor(Color.WHITE);
                     resumeTemplateId=2;
-                }
-            }
-        });
-
-        binding.resumeTemplateCard3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(resumeTemplateId!=3){
-                    binding.resumeTemplateCard0.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard1.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard2.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard3.setCardBackgroundColor(Color.GRAY);
-                    binding.resumeTemplateCard4.setCardBackgroundColor(Color.WHITE);
-                    resumeTemplateId=3;
-                }
-            }
-        });
-
-        binding.resumeTemplateCard4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(resumeTemplateId!=4){
-                    binding.resumeTemplateCard0.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard1.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard2.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard3.setCardBackgroundColor(Color.WHITE);
-                    binding.resumeTemplateCard4.setCardBackgroundColor(Color.GRAY);
-                    resumeTemplateId=4;
                 }
             }
         });

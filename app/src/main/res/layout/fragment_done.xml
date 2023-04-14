@@ -54,10 +54,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/btnCreateResume"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,9 +84,9 @@
 
                     <ImageView
                         android:id="@+id/imgResume0"
-                        android:layout_width="170dp"
-                        android:layout_height="250dp"
-                        android:src="@drawable/ic_date_picker"></ImageView>
+                        android:layout_width="145dp"
+                        android:layout_height="220dp"
+                        android:src="@mipmap/resume0"></ImageView>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -109,9 +107,9 @@
 
                     <ImageView
                         android:id="@+id/imgResume1"
-                        android:layout_width="170dp"
-                        android:layout_height="250dp"
-                        android:src="@drawable/ic_date_picker"></ImageView>
+                        android:layout_width="145dp"
+                        android:layout_height="220dp"
+                        android:src="@mipmap/resume1"></ImageView>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -139,66 +137,15 @@
 
                     <ImageView
                         android:id="@+id/imgResume2"
-                        android:layout_width="170dp"
-                        android:layout_height="250dp"
-                        android:src="@drawable/ic_date_picker"></ImageView>
+                        android:layout_width="145dp"
+                        android:layout_height="220dp"
+                        android:src="@mipmap/resume2"></ImageView>
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/resumeTemplateCard3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    tools:layout_editor_absoluteX="10dp">
-
-                    <ImageView
-                        android:id="@+id/imgResume3"
-                        android:layout_width="170dp"
-                        android:layout_height="250dp"
-                        android:src="@drawable/ic_date_picker"></ImageView>
-
-                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/resumeTemplateCard4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    tools:layout_editor_absoluteX="10dp">
-
-                    <ImageView
-                        android:id="@+id/imgResume4"
-                        android:layout_width="170dp"
-                        android:layout_height="250dp"
-                        android:src="@drawable/ic_date_picker"></ImageView>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
 
 
         </LinearLayout>
