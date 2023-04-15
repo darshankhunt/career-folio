@@ -19,12 +19,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.resumemaker.HomeSc;
+import com.example.resumemaker.MainActivity;
 import com.example.resumemaker.Model.EducationModel;
 import com.example.resumemaker.Model.SkillModel;
 import com.example.resumemaker.Model.UserModel;
 import com.example.resumemaker.Model.WorkModel;
 import com.example.resumemaker.databinding.FragmentDoneBinding;
+import com.example.resumemaker.databinding.FragmentHomeBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -33,7 +34,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DoneFragment extends Fragment {
 
@@ -180,7 +180,7 @@ public class DoneFragment extends Fragment {
                 //Remove data on shared preference file
                 //editor.clear().apply();
 
-                Intent intent = new Intent(getActivity(), HomeSc.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }
