@@ -73,6 +73,7 @@
                 tools:ignore="DuplicateIds">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -97,6 +98,7 @@
                 app:startIconTint="@color/purple_500">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edFullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
@@ -122,10 +124,12 @@
                 app:startIconTint="@color/purple_500">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mobile"
                     android:inputType="numberDecimal"
+                    android:maxLength="10"
                     android:padding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
 

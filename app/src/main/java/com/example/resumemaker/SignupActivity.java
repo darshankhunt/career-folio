@@ -1,21 +1,41 @@
 package com.example.resumemaker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.resumemaker.Model.SignUpModel;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
     ImageView imgSignupGif;
-    TextInputLayout tilSignupEmail, tilSignupFullName, tilSignupNumber;
+
+    EditText edNumber, edEmail, edFullName;
     Button btnSignupContinue;
     TextView txtLogin;
 
@@ -28,9 +48,9 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         imgSignupGif = findViewById(R.id.imgSignupGif);
-        tilSignupEmail = findViewById(R.id.tilLoginEmail);
-        tilSignupFullName = findViewById(R.id.tilEnterPassword);
-        tilSignupNumber = findViewById(R.id.tilForgotPasswordNumber);
+        edEmail = findViewById(R.id.edEmail);
+        edFullName = findViewById(R.id.edFullname);
+        edNumber = findViewById(R.id.edNumber);
         txtLogin = findViewById(R.id.txtLogin);
         btnSignupContinue = findViewById(R.id.btnSignupContinue);
 
@@ -41,21 +61,58 @@ public class SignupActivity extends AppCompatActivity {
         btnSignupContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String  email = tilSignupEmail.getEditText().getText().toString().trim();
-                String fullName = tilSignupFullName.getEditText().getText().toString().trim();
-                String number = tilSignupNumber.getEditText().getText().toString().trim();
+                String  email = edEmail.getText().toString().trim();
+                String fullName = edFullName.getText().toString().trim();
+                String number = edNumber.getText().toString().trim();
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
                 if(email.equals("")){
-                    tilSignupEmail.setError("Enter your Email");
+                    edEmail.setError("Enter your Email");
                 } else if (!email.matches(emailPattern)) {
-                    tilSignupEmail.setError("Invalid email address");
+                    edEmail.setError("Invalid email address");
                 } else if (fullName.equals("")) {
-                    tilSignupFullName.setError("Enter your Full Name");
+                    edFullName.setError("Enter your Full Name");
                 } else if (number.equals("")) {
-                    tilSignupNumber.setError("Enter Mobile Number");
+                    edNumber.setError("Enter Mobile Number");
                 }else{
-                    Toast.makeText(SignupActivity.this, ""+email+" hi "+fullName+ "  "+number, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignupActivity.this, EnterPasswordActivity.class);
+                    intent.putExtra("email",email);
+                    intent.putExtra("full_name",fullName);
+                    intent.putExtra("number",number);
+                    startActivity(intent);
+
+
+                    /*RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
+                    String url ="http://172.20.10.5/resumepdfapi/signupPost.php";
+                    String json = sh.getString("SignUpData", "");
+                    JSONObject jsonObject;
+                    try {
+                        jsonObject=new JSONObject(json);
+                        Log.i("json",""+jsonObject);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Toast.makeText(SignupActivity.this, "Register Successfully!!", Toast.LENGTH_SHORT).show();
+                                    Log.i("API_responce", "onResponse: "+response);
+
+
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_LONG).show();
+                            Log.e("API_responce", "onError: "+error.getLocalizedMessage());
+
+                        }
+                    });
+                    queue.add(jsonObjectRequest);*/
+
+//                    Toast.makeText(SignupActivity.this, ""+email+" hi "+fullName+ "  "+number, Toast.LENGTH_SHORT).show();
                 }
             }
         });
