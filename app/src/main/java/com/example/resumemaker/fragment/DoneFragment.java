@@ -107,6 +107,7 @@ public class DoneFragment extends Fragment {
                 String objective = sh.getString("objective","");
                 int ResumeTemplateId = sh.getInt("ResumeTemplateId",0);
 
+
                 // Code for WorkData
                 String jsonWorkArr = sh.getString("workList", "");
                 Type typeWork = new TypeToken<ArrayList<WorkModel>>() {
@@ -125,9 +126,14 @@ public class DoneFragment extends Fragment {
                 }.getType();
                 ArrayList<SkillModel> skillList = gson.fromJson(jsonSkillArr, typeSkill);
 
+                // Code for get EmailID
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+                String emailOfUser = sharedPreferences.getString("email","");
 
-                UserModel u = new UserModel(resumeTemplateId,first_name,last_name,profession,email,MoNO,Website,Country,objective,workList,eduList,skillList);
+
+                UserModel u = new UserModel(resumeTemplateId,emailOfUser,first_name,last_name,profession,email,MoNO,Website,Country,objective,workList,eduList,skillList);
                 u.setResumeTemplateId(ResumeTemplateId);
+                u.setEmailOfUser(emailOfUser);;
                 u.setfName(first_name);
                 u.setlName(last_name);
                 u.setProfession(profession);

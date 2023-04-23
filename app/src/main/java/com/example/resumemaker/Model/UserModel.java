@@ -5,7 +5,7 @@ import java.util.List;
 public class UserModel {
 
     private int resumeTemplateId;
-    private String fName,lName,profession,email,contactNumber,website,country,objective;
+    private String fName,lName,profession,email,contactNumber,website,country,objective,emailOfUser;
     private WorkModel workModel;
     private EducationModel educationModel;
     private SkillModel skillModel;
@@ -15,8 +15,9 @@ public class UserModel {
     private List<SkillModel> skillList;
 
 
-    public UserModel(int resumeTemplateId, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, List<WorkModel> workList, List<EducationModel> eduList, List<SkillModel> skillList) {
+    public UserModel(int resumeTemplateId,String emailOfUser, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, List<WorkModel> workList, List<EducationModel> eduList, List<SkillModel> skillList) {
         this.resumeTemplateId = resumeTemplateId;
+        this.emailOfUser = emailOfUser;
         this.fName = fName;
         this.lName = lName;
         this.profession = profession;
@@ -38,6 +39,14 @@ public class UserModel {
         this.country = country;
     }
 
+
+    public String getEmailOfUser() {
+        return emailOfUser;
+    }
+
+    public void setEmailOfUser(String emailOfUser) {
+        this.emailOfUser = emailOfUser;
+    }
 
     public List<EducationModel> getEduList() {
         return eduList;

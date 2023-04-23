@@ -42,14 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
-        SharedPreferences sharedPreferences = getSharedPreferences("UserSignUpData", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-
+        getSupportActionBar().hide();
 
         imgLoginGif = findViewById(R.id.imgLoginGif);
         edEmail = findViewById(R.id.edEmail);
@@ -89,14 +82,14 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
                                     }else{
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        editor.putString("email",email);
-                                        String HelloEmail=  sharedPreferences.getString("email","");
-                                        Log.i("Hello",HelloEmail);
+                                        SharedPreferences sharedPreferences = getSharedPreferences("UserSignUpData", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor1 = sharedPreferences.edit();
+                                        editor1.putString("email",email);
+                                        editor1.commit();
                                         startActivity(intent);
                                         finish();
                                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                                     }
-
                                 }
                             }, new Response.ErrorListener() {
                         @Override
