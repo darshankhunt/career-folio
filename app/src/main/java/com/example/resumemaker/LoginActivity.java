@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -21,7 +22,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView txtSignUP, txtForgetPassword;
     private ImageView imgLoginGif;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         getSupportActionBar().hide();
+
+        mAuth = FirebaseAuth.getInstance();
 
         imgLoginGif = findViewById(R.id.imgLoginGif);
         edEmail = findViewById(R.id.edEmail);
@@ -68,7 +76,41 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (password.equals("")) {
                     edPassword.setError("Enter your Password");
                 }else{
-                    // API CODE
+
+
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        if(mAuth.getCurrentUser().isEmailVerified()){
+                                            SharedPreferences sh = getSharedPreferences("UserSignUpData", MODE_PRIVATE);
+                                            SharedPreferences.Editor editor =sh.edit();
+                                            editor.putString("email",email);
+                                            editor.commit();
+                                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(intent);
+                                            Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
+                                        }else {
+                                            Toast.makeText(LoginActivity.this, "Please verify your email address!", Toast.LENGTH_SHORT).show();
+                                        }
+                                        // Sign in success, update UI with the signed-in user's information
+//                                        Log.d(TAG, "signInWithEmail:success");
+//                                        FirebaseUser user = mAuth.getCurrentUser();
+//                                        updateUI(user);
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(LoginActivity.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+//                                        Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
+//                                                Toast.LENGTH_SHORT).show();
+//                                        updateUI(null);
+                                    }
+                                }
+                            });
+
+
+                    /*// API CODE
                     RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                     String url ="http://172.20.10.5/resumepdfapi/signupGet.php";
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -105,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     };
                     queue.add(stringRequest);
-
+*/
 
 //                    Toast.makeText(LoginActivity.this, ""+email+" hi "+password, Toast.LENGTH_SHORT).show();
                 }

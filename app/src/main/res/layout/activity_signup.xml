@@ -13,14 +13,26 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:padding="10dp"
+                android:text="By signing up, you're agree to our Terms &amp; Conditions \nand Privacy Policy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilEnterPassword" />
 
             <ImageView
                 android:id="@+id/imgSignupGif"
@@ -57,7 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Email"
                 app:boxBackgroundColor="@color/background"
@@ -66,7 +77,7 @@
                 app:endIconTint="@color/purple_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/tilFullName"
                 app:placeholderText="ex: abc@gmail.com"
                 app:startIconDrawable="@drawable/baseline_email_24"
                 app:startIconTint="@color/purple_500"
@@ -81,10 +92,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEnterPassword"
+                android:id="@+id/tilFullName"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Full Name"
                 app:boxBackgroundColor="@color/background"
@@ -93,7 +105,7 @@
                 app:endIconTint="@color/purple_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilLoginEmail"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
                 app:startIconDrawable="@drawable/baseline_person_24"
                 app:startIconTint="@color/purple_500">
 
@@ -106,51 +118,35 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilForgotPasswordNumber"
+                android:id="@+id/tilEnterPassword"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
+                android:hint="New Password"
                 app:boxBackgroundColor="@color/background"
                 app:boxBackgroundMode="outline"
-                app:counterMaxLength="10"
-                app:endIconMode="clear_text"
+                app:endIconMode="password_toggle"
                 app:endIconTint="@color/purple_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilEnterPassword"
-                app:prefixText="+91"
-                app:startIconDrawable="@android:drawable/stat_sys_phone_call"
+                app:layout_constraintTop_toBottomOf="@+id/tilLoginEmail"
+                app:startIconDrawable="@android:drawable/ic_lock_lock"
                 app:startIconTint="@color/purple_500">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edNumber"
+                    android:id="@+id/edPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mobile"
-                    android:inputType="numberDecimal"
-                    android:maxLength="10"
+                    android:inputType="textPassword"
                     android:padding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="352dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:padding="10dp"
-                android:text="By signing up, you're agree to our Terms &amp; Conditions \nand Privacy Policy"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilForgotPasswordNumber" />
 
             <TextView
                 android:id="@+id/txtLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:text="Joined us before? Login"
                 android:textColor="@color/purple_500"
