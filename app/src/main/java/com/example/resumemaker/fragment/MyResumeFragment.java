@@ -28,10 +28,20 @@ public class MyResumeFragment extends Fragment {
         binding = FragmentMyResumeBinding.inflate(inflater,container,false);
         // Inflate the layout for this fragment
 
+        // Code for Resume Show or Hide
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+        int TotalResume = sharedPreferences.getInt("TotalResume",0);
+        if(TotalResume>0){
+            binding.ResumeTxt.setVisibility(View.GONE);
+            binding.userResumeCard.setVisibility(View.VISIBLE);
+        }else{
+            binding.ResumeTxt.setVisibility(View.VISIBLE);
+            binding.userResumeCard.setVisibility(View.GONE);
+        }
+
         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =sh.edit();
         int ResumeTemplateId = sh.getInt("ResumeTemplateId",0);
-
         if(ResumeTemplateId==0){
             binding.imgResume.setImageResource(R.mipmap.resume0);
         } else if (ResumeTemplateId==1) {
@@ -45,6 +55,7 @@ public class MyResumeFragment extends Fragment {
         binding.btnDownloadResume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getActivity(), "Download Resume", Toast.LENGTH_SHORT).show();
             }
         });

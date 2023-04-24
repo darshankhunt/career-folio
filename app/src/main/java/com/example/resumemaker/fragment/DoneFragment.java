@@ -130,6 +130,11 @@ public class DoneFragment extends Fragment {
                 SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
                 String emailOfUser = sharedPreferences.getString("email","");
 
+                // For count total Resume
+                SharedPreferences.Editor editor1 =sharedPreferences.edit();
+                editor1.putInt("TotalResume",1);
+                editor1.commit();
+
 
                 UserModel u = new UserModel(resumeTemplateId,emailOfUser,first_name,last_name,profession,email,MoNO,Website,Country,objective,workList,eduList,skillList);
                 u.setResumeTemplateId(ResumeTemplateId);
@@ -168,16 +173,29 @@ public class DoneFragment extends Fragment {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Toast.makeText(getActivity(), "Data Inserted!!", Toast.LENGTH_SHORT).show();
+                                /*SharedPreferences.Editor editor1 =sh.edit();
+                                editor1.putInt("TotalResume",1);
+                                editor1.commit();*/
+                          //      Toast.makeText(getContext(), "Data Inserted!!", Toast.LENGTH_SHORT).show();
+                                try {
+                                    int success=response.getInt("success");
+                                    if(success==0){
+                                        Log.i("res1","Data not inserted");
+                                    } else if (success==1) {
+                                        Log.i("res1","Data inserted");
+                                    }else if(success==-1){
+                                        Log.i("res1","connection failed");
+                                    }
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
                                 Log.i("API_responce", "onResponse: "+response);
-
-
                             }
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                        // Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_LONG).show();
-                        Log.e("API_responce", "onError: "+error.getLocalizedMessage());
+                        Log.e("API_responce1", "onError: "+error.getLocalizedMessage());
 
                     }
                 });
