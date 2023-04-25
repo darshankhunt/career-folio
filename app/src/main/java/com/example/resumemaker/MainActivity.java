@@ -27,12 +27,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         //Code for Hide appBar
-       getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
 
-       binding.bottomNavigationView.setBackground(null);
-
-       binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+        binding.bottomNavigationView.setBackground(null);
+        //Code for load default home fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new HomeFragment()).commit();
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
            switch(item.getItemId()){
                case R.id.home:
                    replaceFragment(new HomeFragment());
@@ -60,4 +61,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
 }
