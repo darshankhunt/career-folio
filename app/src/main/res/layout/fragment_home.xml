@@ -152,6 +152,10 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/resumeTemplate0"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardBackgroundColor="@color/white"
@@ -180,6 +184,10 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/resumeTemplate1"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardBackgroundColor="@color/white"
@@ -208,6 +216,10 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/resumeTemplate2"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardBackgroundColor="@color/white"
