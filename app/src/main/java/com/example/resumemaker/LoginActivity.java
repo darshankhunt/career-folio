@@ -1,10 +1,8 @@
 package com.example.resumemaker;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,20 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         imgLoginGif = findViewById(R.id.imgLoginGif);
-        edEmail = findViewById(R.id.edEmail);
+        edEmail = findViewById(R.id.edForgetEmail);
         edPassword = findViewById(R.id.edPassword);
         btnLogin = findViewById(R.id.btnLogin);
         txtSignUP = findViewById(R.id.txtSignUp);
@@ -75,7 +63,9 @@ public class LoginActivity extends AppCompatActivity {
                     edEmail.setError("Invalid email address");
                 } else if (password.equals("")) {
                     edPassword.setError("Enter your Password");
-                }else{
+                } else if (password.length() < 6) {
+                    Toast.makeText(LoginActivity.this, "Password must be 6 char long.", Toast.LENGTH_SHORT).show();
+                } else{
 
 
                     mAuth.signInWithEmailAndPassword(email, password)
@@ -83,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
                                         if(mAuth.getCurrentUser().isEmailVerified()){
                                             SharedPreferences sh = getSharedPreferences("UserSignUpData", MODE_PRIVATE);
                                             SharedPreferences.Editor editor =sh.edit();
@@ -90,21 +81,14 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.commit();
                                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                             startActivity(intent);
+                                            finish();
                                             Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                                         }else {
                                             Toast.makeText(LoginActivity.this, "Please verify your email address!", Toast.LENGTH_SHORT).show();
                                         }
-                                        // Sign in success, update UI with the signed-in user's information
-//                                        Log.d(TAG, "signInWithEmail:success");
-//                                        FirebaseUser user = mAuth.getCurrentUser();
-//                                        updateUI(user);
                                     } else {
                                         // If sign in fails, display a message to the user.
-                                        Toast.makeText(LoginActivity.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
-//                                        Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-//                                                Toast.LENGTH_SHORT).show();
-//                                        updateUI(null);
+                                        Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -151,7 +135,6 @@ public class LoginActivity extends AppCompatActivity {
 
 //                    Toast.makeText(LoginActivity.this, ""+email+" hi "+password, Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

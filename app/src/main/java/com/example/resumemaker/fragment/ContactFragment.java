@@ -3,13 +3,11 @@ package com.example.resumemaker.fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -17,9 +15,6 @@ import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.Model.UserModel;
 import com.example.resumemaker.R;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ContactFragment extends Fragment {
     public ContactFragment() {
@@ -44,7 +39,7 @@ public class ContactFragment extends Fragment {
         String coun = sh.getString("Country", "");
 
         btnNext = view.findViewById(R.id.btnNext);
-        edEmail = view.findViewById(R.id.edEmail);
+        edEmail = view.findViewById(R.id.edForgetEmail);
         edWebsite = view.findViewById(R.id.edWebsite);
         edCountry = view.findViewById(R.id.edCountry);
         edMoNo = view.findViewById(R.id.edMoNo);

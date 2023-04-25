@@ -169,7 +169,7 @@
                                 <ImageView
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/ic_date_picker"></ImageView>
+                                    android:src="@mipmap/resume0"></ImageView>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -197,7 +197,7 @@
                                 <ImageView
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/ic_date_picker"></ImageView>
+                                    android:src="@mipmap/resume1"></ImageView>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -225,7 +225,7 @@
                                 <ImageView
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/ic_date_picker"></ImageView>
+                                    android:src="@mipmap/resume2"></ImageView>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -240,18 +240,21 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@mipmap/im10" />
+    <ImageButton
+        android:id="@+id/UserIconButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
 
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_design"
+        android:backgroundTint="#00CF3535"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/im10" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,7 @@
 package com.example.resumemaker;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,27 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.resumemaker.Model.SignUpModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -57,7 +38,7 @@ public class SignupActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         imgSignupGif = findViewById(R.id.imgSignupGif);
-        edEmail = findViewById(R.id.edEmail);
+        edEmail = findViewById(R.id.edForgetEmail);
         edFullName = findViewById(R.id.edFullname);
         edPassword = findViewById(R.id.edPassword);
         txtLogin = findViewById(R.id.txtLogin);
@@ -82,8 +63,10 @@ public class SignupActivity extends AppCompatActivity {
                 } else if (fullName.equals("")) {
                     edFullName.setError("Enter your Full Name");
                 } else if (password.equals("")) {
-                    edPassword.setError("Enter Mobile Number");
-                }else{
+                    edPassword.setError("Enter Password");
+                } else if (password.length() < 6) {
+                    Toast.makeText(SignupActivity.this, "Password must be 6 char long.", Toast.LENGTH_SHORT).show();
+                } else{
                     /*Intent intent = new Intent(SignupActivity.this, EnterPasswordActivity.class);
                     intent.putExtra("email",email);
                     intent.putExtra("full_name",fullName);

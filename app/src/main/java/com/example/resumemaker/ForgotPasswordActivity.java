@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.resumemaker.databinding.ActivityForgotPasswordBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -20,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private String email;
     ActivityForgotPasswordBinding binding;
 
     @Override
@@ -27,15 +30,39 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityForgotPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
+        getSupportActionBar().hide();
         mAuth = FirebaseAuth.getInstance();
+
+
+
+        binding.btnForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                email = binding.edForgetEmail.getText().toString().trim();
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(ForgotPasswordActivity.this, "Password send to your email", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            Toast.makeText(ForgotPasswordActivity.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+            }
+        });
+
+
+
         // set this to remove reCaptcha web
 //        mAuth.getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
 
-        binding.btnForgotPassword.setOnClickListener(new View.OnClickListener() {
+        /*binding.btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -87,6 +114,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     Toast.makeText(ForgotPasswordActivity.this, "Enter Mobile number.", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
     }
 }
