@@ -3,6 +3,7 @@ package com.example.resumemaker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,13 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignupActivity extends AppCompatActivity {
-
-    ImageView imgSignupGif;
-
-    EditText edPassword, edEmail, edFullName;
-    Button btnSignupContinue;
-     private FirebaseAuth mAuth;
-    TextView txtLogin;
+    private EditText edPassword, edEmail, edFullName;
+    private Button btnSignupContinue,txtLogin;
+    private FirebaseAuth mAuth;
 
 
 
@@ -33,11 +30,11 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        getSupportActionBar().hide();
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         mAuth = FirebaseAuth.getInstance();
 
-        imgSignupGif = findViewById(R.id.imgSignupGif);
         edEmail = findViewById(R.id.edForgetEmail);
         edFullName = findViewById(R.id.edFullname);
         edPassword = findViewById(R.id.edPassword);
@@ -55,13 +52,12 @@ public class SignupActivity extends AppCompatActivity {
                 String fullName = edFullName.getText().toString().trim();
                 String password = edPassword.getText().toString().trim();
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
-                if(email.equals("")){
+                if (fullName.equals("")) {
+                    edFullName.setError("Enter your Full Name");
+                }else if(email.equals("")){
                     edEmail.setError("Enter your Email");
                 } else if (!email.matches(emailPattern)) {
                     edEmail.setError("Invalid email address");
-                } else if (fullName.equals("")) {
-                    edFullName.setError("Enter your Full Name");
                 } else if (password.equals("")) {
                     edPassword.setError("Enter Password");
                 } else if (password.length() < 6) {

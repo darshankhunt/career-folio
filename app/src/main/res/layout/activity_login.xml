@@ -8,7 +8,41 @@
     android:scrollbars="vertical"
     tools:context=".LoginActivity">
 
+    <Button
+        android:id="@+id/txtSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background"
+        android:elevation="0dp"
+        android:outlineProvider="none"
+        android:textAllCaps="false"
+        android:text="Don't have an account? Sign up now"
+        android:textColor="@color/purple_500"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_design"
+        android:text="Login"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
     <ScrollView
+        android:id="@+id/scrollView7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,23 +55,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="1700dp"
             android:background="@color/background">
 
-
-            <ImageView
-                android:id="@+id/imgLoginGif"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="81dp"
-                android:contentDescription="LoginImg"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/login_sc" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -56,8 +76,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgLoginGif" />
 
-<!--            style="@style/Widget.Design.TextInputLayout"-->
-<!--            android:theme="@style/EditTextThemeOverlay"-->
+            <!--            style="@style/Widget.Design.TextInputLayout"-->
+            <!--            android:theme="@style/EditTextThemeOverlay"-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilForgetEmail"
                 android:layout_width="match_parent"
@@ -88,7 +108,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEnterPassword"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="55dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
@@ -116,6 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="296dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:text="Forget Password?"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,38 +144,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilEnterPassword" />
 
-            <TextView
-                android:id="@+id/txtSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="24dp"
-                android:text="Don't have an account? Sign up now"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <ImageView
+                android:id="@+id/imgLoginGif"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="81dp"
+                android:contentDescription="LoginImg"
+                android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
-            <Button
-                android:id="@+id/btnLogin"
-                style="@style/Widget.AppCompat.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/button_design"
-
-                android:text="Login"
-                app:cornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtForgetPassword"
-                tools:ignore="DuplicateSpeakableTextCheck" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/login_sc" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

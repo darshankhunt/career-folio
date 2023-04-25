@@ -8,15 +8,48 @@
     android:orientation="vertical"
     tools:context=".SignupActivity">
 
+    <Button
+        android:id="@+id/btnSignupContinue"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="32dp"
+
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_design"
+        android:text="Register"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/txtLogin"
+        android:outlineProvider="none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background"
+        android:elevation="0dp"
+        android:textAllCaps="false"
+        android:text="Joined us before? Login"
+        android:textColor="@color/purple_500"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignupContinue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ScrollView
+        android:id="@+id/scrollView9"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,12 +57,11 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="352dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:padding="10dp"
-                android:text="By signing up, you're agree to our Terms &amp; Conditions \nand Privacy Policy"
+                android:paddingLeft="32dp"
+                android:paddingEnd="32dp"
+                android:text="By signing up, you're agree to our Terms &amp; Conditions and Privacy Policy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilEnterPassword" />
@@ -141,36 +173,6 @@
                     android:inputType="textPassword"
                     android:padding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/txtLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="31dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:text="Joined us before? Login"
-                android:textColor="@color/purple_500"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-            <Button
-                android:id="@+id/btnSignupContinue"
-                style="@style/Widget.AppCompat.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_marginStart="32dp"
-
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/button_design"
-                android:text="Register"
-                app:cornerRadius="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtLogin" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

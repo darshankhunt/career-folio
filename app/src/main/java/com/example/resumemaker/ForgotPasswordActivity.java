@@ -3,6 +3,7 @@ package com.example.resumemaker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityForgotPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         mAuth = FirebaseAuth.getInstance();
 
@@ -39,21 +42,27 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 email = binding.edForgetEmail.getText().toString().trim();
-                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(ForgotPasswordActivity.this, "Password send to your email", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else {
-                            Toast.makeText(ForgotPasswordActivity.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+                if(email.equals("")){
+                    binding.edForgetEmail.setError("Please enter email.");
+                } else if (!email.matches(emailPattern)) {
+                    binding.edForgetEmail.setError("Invalid email address");
+                }else{
+                    mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(ForgotPasswordActivity.this, "Password send to your email", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else {
+                                Toast.makeText(ForgotPasswordActivity.this, ""+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
-
-
+                    });
+                }
             }
         });
 

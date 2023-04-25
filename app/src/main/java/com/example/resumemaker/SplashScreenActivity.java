@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.WindowManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_activity);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
         new Handler().postDelayed(new Runnable() {
@@ -32,6 +34,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                     finish();
                 }
             }
-        },3000);
+        },1000);
     }
 }
