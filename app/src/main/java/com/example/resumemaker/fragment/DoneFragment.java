@@ -136,7 +136,7 @@ public class DoneFragment extends Fragment {
                 editor1.commit();
 
 
-                UserModel u = new UserModel(resumeTemplateId,emailOfUser,first_name,last_name,profession,email,MoNO,Website,Country,objective,workList,eduList,skillList);
+                UserModel u = new UserModel();
                 u.setResumeTemplateId(ResumeTemplateId);
                 u.setEmailOfUser(emailOfUser);;
                 u.setfName(first_name);
@@ -180,21 +180,25 @@ public class DoneFragment extends Fragment {
                                 try {
                                     int success=response.getInt("success");
                                     if(success==0){
-                                        Log.i("res1","Data not inserted");
+                                        Toast.makeText(getContext(), "Data not inserted", Toast.LENGTH_SHORT).show();
+//                                        Log.i("res1","Data not inserted");
                                     } else if (success==1) {
-                                        Log.i("res1","Data inserted");
+                                        Toast.makeText(getContext(), "Data inserted", Toast.LENGTH_SHORT).show();
+//                                        Log.i("res1","Data inserted");
                                     }else if(success==-1){
-                                        Log.i("res1","connection failed");
+                                        Toast.makeText(getContext(), "connection failed", Toast.LENGTH_SHORT).show();
+//                                        Log.i("res1","connection failed");
                                     }
                                 } catch (JSONException e) {
                                     throw new RuntimeException(e);
                                 }
+//                                Toast.makeText(getContext(), "onResponse: "+response, Toast.LENGTH_SHORT).show();
                                 Log.i("API_responce", "onResponse: "+response);
                             }
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                       // Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_LONG).show();
                         Log.e("API_responce1", "onError: "+error.getLocalizedMessage());
 
                     }

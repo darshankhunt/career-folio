@@ -14,6 +14,9 @@ public class UserModel {
     private List<EducationModel> eduList;
     private List<SkillModel> skillList;
 
+    public UserModel(){
+
+    }
 
     public UserModel(int resumeTemplateId,String emailOfUser, String fName, String lName, String profession, String email, String contactNumber, String website, String country, String objective, List<WorkModel> workList, List<EducationModel> eduList, List<SkillModel> skillList) {
         this.resumeTemplateId = resumeTemplateId;
