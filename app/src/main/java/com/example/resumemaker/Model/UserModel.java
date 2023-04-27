@@ -4,8 +4,8 @@ import java.util.List;
 
 public class UserModel {
 
-    private int resumeTemplateId;
-    private String fName,lName,profession,email,contactNumber,website,country,objective,emailOfUser;
+    private int resumeTemplateId,resume_id;
+    private String fName,lName,profession,email,contactNumber,website,country,objective,emailOfUser,resume_pdf;
     private WorkModel workModel;
     private EducationModel educationModel;
     private SkillModel skillModel;
@@ -42,6 +42,32 @@ public class UserModel {
         this.country = country;
     }
 
+    public UserModel(String emailOfUser, String resume_pdf) {
+        this.emailOfUser = emailOfUser;
+        this.resume_pdf = resume_pdf;
+    }
+
+    public UserModel(int resume_id, String emailOfUser, String resume_pdf) {
+        this.resume_id = resume_id;
+        this.emailOfUser = emailOfUser;
+        this.resume_pdf = resume_pdf;
+    }
+
+    public int getResume_id() {
+        return resume_id;
+    }
+
+    public void setResume_id(int resume_id) {
+        this.resume_id = resume_id;
+    }
+
+    public String getResume_pdf() {
+        return resume_pdf;
+    }
+
+    public void setResume_pdf(String resume_pdf) {
+        this.resume_pdf = resume_pdf;
+    }
 
     public String getEmailOfUser() {
         return emailOfUser;

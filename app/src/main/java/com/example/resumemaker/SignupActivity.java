@@ -2,6 +2,7 @@ package com.example.resumemaker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -13,11 +14,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
     private EditText edPassword, edEmail, edFullName;
@@ -80,6 +90,32 @@ public class SignupActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful()){
+
+                                                    RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
+                                                    String url ="http://172.20.10.5/resumepdfapi/signupPost.php";
+
+                                                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                                                            new Response.Listener<String>() {
+                                                                @Override
+                                                                public void onResponse(String response) {
+//                                                                    Toast.makeText(SignupActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                                                                    Log.i("Resopo",response);
+                                                                }
+                                                            }, new Response.ErrorListener() {
+                                                        @Override
+                                                        public void onErrorResponse(VolleyError error) {
+//                                                            textView.setText("That didn't work!");
+//                                                            Toast.makeText(SignupActivity.this, "error", Toast.LENGTH_SHORT).show();
+                                                            Log.i("api_error","Error ");
+                                                        }
+                                                    }){
+                                                        protected Map<String, String> getParams(){
+                                                            Map<String, String> paramV = new HashMap<>();
+                                                            paramV.put("emailOfUser", email);
+                                                            return paramV;
+                                                        }
+                                                    };
+                                                    queue.add(stringRequest);
                                                     Toast.makeText(SignupActivity.this, "Registered Successfully. Please check your email for verification.", Toast.LENGTH_LONG).show();
                                                     Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                                                     startActivity(intent);

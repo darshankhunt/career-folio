@@ -95,7 +95,6 @@ public class DoneFragment extends Fragment {
                 SharedPreferences.Editor editor =sh.edit();
                 editor.putInt("ResumeTemplateId", resumeTemplateId);
                 editor.commit();
-
 // Code of API
                 String first_name = sh.getString("first_name","");
                 String last_name = sh.getString("last_name","");
@@ -130,12 +129,6 @@ public class DoneFragment extends Fragment {
                 SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
                 String emailOfUser = sharedPreferences.getString("email","");
 
-                // For count total Resume
-                SharedPreferences.Editor editor1 =sharedPreferences.edit();
-                editor1.putInt("TotalResume",1);
-                editor1.commit();
-
-
                 UserModel u = new UserModel();
                 u.setResumeTemplateId(ResumeTemplateId);
                 u.setEmailOfUser(emailOfUser);;
@@ -159,7 +152,7 @@ public class DoneFragment extends Fragment {
 
                 // API CODE
                 RequestQueue queue = Volley.newRequestQueue(getActivity());
-                String url ="http://172.20.10.5/resumepdfapi/create.php";
+                String url ="http://172.20.10.5/resumepdfapi/create_api.php";
                 String json = sh.getString("FinalData", "");
                 JSONObject jsonObject;
                 try {
@@ -173,21 +166,22 @@ public class DoneFragment extends Fragment {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                /*SharedPreferences.Editor editor1 =sh.edit();
-                                editor1.putInt("TotalResume",1);
-                                editor1.commit();*/
                           //      Toast.makeText(getContext(), "Data Inserted!!", Toast.LENGTH_SHORT).show();
                                 try {
                                     int success=response.getInt("success");
                                     if(success==0){
-                                        Toast.makeText(getContext(), "Data not inserted", Toast.LENGTH_SHORT).show();
-//                                        Log.i("res1","Data not inserted");
+                                        Toast.makeText(getActivity(), "Data not inserted", Toast.LENGTH_SHORT).show();
+                                        Log.i("res1","Data not inserted");
                                     } else if (success==1) {
-                                        Toast.makeText(getContext(), "Data inserted", Toast.LENGTH_SHORT).show();
-//                                        Log.i("res1","Data inserted");
+                                        // For count total Resume
+                                        SharedPreferences.Editor editor1 =sharedPreferences.edit();
+                                        editor1.putInt("TotalResume",1);
+                                        editor1.commit();
+                                        Toast.makeText(getActivity(), "Data inserted", Toast.LENGTH_SHORT).show();
+                                        Log.i("res1","Data inserted");
                                     }else if(success==-1){
-                                        Toast.makeText(getContext(), "connection failed", Toast.LENGTH_SHORT).show();
-//                                        Log.i("res1","connection failed");
+                                        Toast.makeText(getActivity(), "connection failed", Toast.LENGTH_SHORT).show();
+                                        Log.i("res1","connection failed");
                                     }
                                 } catch (JSONException e) {
                                     throw new RuntimeException(e);
@@ -198,7 +192,7 @@ public class DoneFragment extends Fragment {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_LONG).show();
                         Log.e("API_responce1", "onError: "+error.getLocalizedMessage());
 
                     }
