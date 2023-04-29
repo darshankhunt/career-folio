@@ -173,14 +173,10 @@ public class DoneFragment extends Fragment {
                                         Toast.makeText(getActivity(), "Data not inserted", Toast.LENGTH_SHORT).show();
                                         Log.i("res1","Data not inserted");
                                     } else if (success==1) {
-                                        // For count total Resume
-                                        SharedPreferences.Editor editor1 =sharedPreferences.edit();
-                                        editor1.putInt("TotalResume",1);
-                                        editor1.commit();
-                                        Toast.makeText(getActivity(), "Data inserted", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getActivity(), "Data inserted", Toast.LENGTH_SHORT).show();
                                         Log.i("res1","Data inserted");
                                     }else if(success==-1){
-                                        Toast.makeText(getActivity(), "connection failed", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getActivity(), "connection failed", Toast.LENGTH_SHORT).show();
                                         Log.i("res1","connection failed");
                                     }
                                 } catch (JSONException e) {
