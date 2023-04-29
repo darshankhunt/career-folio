@@ -24,11 +24,20 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.Model.WorkModel;
 import com.example.resumemaker.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.text.ParseException;
@@ -114,6 +123,57 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
         chbPresentWorking0 = view.findViewById(R.id.chbPresentWorking0);
         chbPresentWorking1 = view.findViewById(R.id.chbPresentWorking1);
         chbPresentWorking2 = view.findViewById(R.id.chbPresentWorking2);
+
+
+/*
+        //        API Calling
+        SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+        String emailOfUser = sh1.getString("email","");
+        String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONArray jsonArray = response;
+                try {
+                    for(int i=0;i<jsonArray.length();i++)
+                    {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String work0 = jsonObject.getString("work_exp_0");
+                        String work1 = jsonObject.getString("work_exp_1");
+//                        JSONObject jsonobj = new JSONObject(work0);
+//                        String cname = jsonobj.getString("companyName");
+//                        JSONObject work0 = jsonObject.getJSONObject("work_exp_0");
+                        Log.i("hello", work0);
+                        Log.i("hell1", work1);
+//                        Toast.makeText(getActivity(), "Hi "+work0.getJSONObject("companyName"), Toast.LENGTH_SHORT).show();
+
+
+                        String email = jsonObject.getString("email");
+                        String contact_number = jsonObject.getString("contact_number");
+                        String address = jsonObject.getString("address");
+                        String website = jsonObject.getString("website");
+//                        edEmail.setText(email);
+//                        edMoNo.setText(contact_number);
+//                        edCountry.setText(address);
+//                        if(!website.equals("")){
+//                            edWebsite.setText(website);
+//                        }
+                    }
+                }
+                catch (Exception w)
+                {
+                    w.printStackTrace();
+//                    Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("ErrorAPI",error.getMessage());
+            }
+        });
+        queue.add(jsonArrayRequest);*/
 
 
         if(wAL0==null){
