@@ -124,57 +124,88 @@ public class WorkFragment extends Fragment implements View.OnClickListener {
         chbPresentWorking1 = view.findViewById(R.id.chbPresentWorking1);
         chbPresentWorking2 = view.findViewById(R.id.chbPresentWorking2);
 
-
-/*
-        //        API Calling
-        SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
-        String emailOfUser = sh1.getString("email","");
-        String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONArray jsonArray = response;
-                try {
-                    for(int i=0;i<jsonArray.length();i++)
+        if (MyResumeFragment.editResume == true){
+            //    Edit API Calling
+            SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+            String emailOfUser = sh1.getString("email","");
+            String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
+            RequestQueue queue = Volley.newRequestQueue(getActivity());
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    JSONArray jsonArray = response;
+                    try {
+                        for(int i=0;i<jsonArray.length();i++)
+                        {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String work0 = jsonObject.getString("work_exp_0");
+                            String work1 = jsonObject.getString("work_exp_1");
+                            String work2 = jsonObject.getString("work_exp_2");
+                            if(!work0.equals("")){
+                                try{
+                                    JSONObject objWork0 = new JSONObject(work0);
+                                    workCard0.setVisibility(View.VISIBLE);
+                                    count++;
+                                    edCompanyName0.setText(objWork0.getString("companyName"));
+                                    edJobTitle0.setText(objWork0.getString("jobTitle"));
+                                    edStartDate0.setText(objWork0.getString("startDate"));
+                                    edEndDate0.setText(objWork0.getString("endDate"));
+                                    edWorkDesc0.setText(objWork0.getString("workDesc"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed work0: \"" + work0 + "\"");
+                                }
+                            }else{
+                                workCard0.setVisibility(View.GONE);
+                            }
+                            if(!work1.equals("")){
+                                try{
+                                    JSONObject objWork1 = new JSONObject(work1);
+                                    workCard1.setVisibility(View.VISIBLE);
+                                    count++;
+                                    edCompanyName1.setText(objWork1.getString("companyName"));
+                                    edJobTitle1.setText(objWork1.getString("jobTitle"));
+                                    edStartDate1.setText(objWork1.getString("startDate"));
+                                    edEndDate1.setText(objWork1.getString("endDate"));
+                                    edWorkDesc1.setText(objWork1.getString("workDesc"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed work1: \"" + work1 + "\"");
+                                }
+                            }else{
+                                workCard1.setVisibility(View.GONE);
+                            }
+                            if(!work2.equals("")){
+                                try {
+                                    JSONObject objWork2 = new JSONObject(work2);
+                                    workCard2.setVisibility(View.VISIBLE);
+                                    count++;
+                                    edCompanyName2.setText(objWork2.getString("companyName"));
+                                    edJobTitle2.setText(objWork2.getString("jobTitle"));
+                                    edStartDate2.setText(objWork2.getString("startDate"));
+                                    edEndDate2.setText(objWork2.getString("endDate"));
+                                    edWorkDesc2.setText(objWork2.getString("workDesc"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed work2: \"" + work2 + "\"");
+                                }
+                            }else{
+                                workCard2.setVisibility(View.GONE);
+                            }
+                        }
+                    }
+                    catch (Exception w)
                     {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        String work0 = jsonObject.getString("work_exp_0");
-                        String work1 = jsonObject.getString("work_exp_1");
-//                        JSONObject jsonobj = new JSONObject(work0);
-//                        String cname = jsonobj.getString("companyName");
-//                        JSONObject work0 = jsonObject.getJSONObject("work_exp_0");
-                        Log.i("hello", work0);
-                        Log.i("hell1", work1);
-//                        Toast.makeText(getActivity(), "Hi "+work0.getJSONObject("companyName"), Toast.LENGTH_SHORT).show();
-
-
-                        String email = jsonObject.getString("email");
-                        String contact_number = jsonObject.getString("contact_number");
-                        String address = jsonObject.getString("address");
-                        String website = jsonObject.getString("website");
-//                        edEmail.setText(email);
-//                        edMoNo.setText(contact_number);
-//                        edCountry.setText(address);
-//                        if(!website.equals("")){
-//                            edWebsite.setText(website);
-//                        }
+                        w.printStackTrace();
+//                    Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 }
-                catch (Exception w)
-                {
-                    w.printStackTrace();
-//                    Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorAPI",error.getMessage());
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("ErrorAPI",error.getMessage());
-            }
-        });
-        queue.add(jsonArrayRequest);*/
+            });
+            queue.add(jsonArrayRequest);
 
+        }
 
         if(wAL0==null){
             workCard0.setVisibility(View.GONE);

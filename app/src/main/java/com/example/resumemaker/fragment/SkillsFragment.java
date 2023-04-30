@@ -3,6 +3,7 @@ package com.example.resumemaker.fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,12 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.Model.SkillModel;
 import com.example.resumemaker.Model.WorkModel;
@@ -21,6 +28,9 @@ import com.example.resumemaker.databinding.FragmentEducationBinding;
 import com.example.resumemaker.databinding.FragmentSkillsBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -49,6 +59,90 @@ public class SkillsFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
 
         binding = FragmentSkillsBinding.inflate(inflater,container,false);
+        if (MyResumeFragment.editResume == true){
+            //    Edit API Calling
+            SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+            String emailOfUser = sh1.getString("email","");
+            String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
+            RequestQueue queue = Volley.newRequestQueue(getActivity());
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    JSONArray jsonArray = response;
+                    try {
+                        for(int i=0;i<jsonArray.length();i++)
+                        {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String skill0 = jsonObject.getString("skill_0");
+                            String skill1 = jsonObject.getString("skill_1");
+                            String skill2 = jsonObject.getString("skill_2");
+                            String skill3 = jsonObject.getString("skill_3");
+                            if(!skill0.equals("")){
+                                try{
+                                    JSONObject objSkill0 = new JSONObject(skill0);
+                                    binding.SkillCard0.setVisibility(View.VISIBLE);
+                                    count++;
+                                    binding.edSkillName0.setText(objSkill0.getString("skill"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed skill0: \"" + skill0 + "\"");
+                                }
+                            }else{
+                                binding.SkillCard0.setVisibility(View.GONE);
+                            }
+                            if(!skill1.equals("")){
+                                try{
+                                    JSONObject objSkill1 = new JSONObject(skill1);
+                                    binding.SkillCard1.setVisibility(View.VISIBLE);
+                                    count++;
+                                    binding.edSkillName1.setText(objSkill1.getString("skill"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed skill1: \"" + skill1 + "\"");
+                                }
+                            }else{
+                                binding.SkillCard1.setVisibility(View.GONE);
+                            }
+                            if(!skill2.equals("")){
+                                try{
+                                    JSONObject objSkill2 = new JSONObject(skill2);
+                                    binding.SkillCard2.setVisibility(View.VISIBLE);
+                                    count++;
+                                    binding.edSkillName2.setText(objSkill2.getString("skill"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed skill2: \"" + skill2 + "\"");
+                                }
+                            }else{
+                                binding.SkillCard2.setVisibility(View.GONE);
+                            }
+                            if(!skill3.equals("")){
+                                try{
+                                    JSONObject objSkill3 = new JSONObject(skill3);
+                                    binding.SkillCard3.setVisibility(View.VISIBLE);
+                                    count++;
+                                    binding.edSkillName3.setText(objSkill3.getString("skill"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed skill3: \"" + skill3 + "\"");
+                                }
+                            }else{
+                                binding.SkillCard3.setVisibility(View.GONE);
+                            }
+                        }
+                    }
+                    catch (Exception w)
+                    {
+                        w.printStackTrace();
+//                    Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorAPI",error.getMessage());
+                }
+            });
+            queue.add(jsonArrayRequest);
+        }
+
+
         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =sh.edit();
         Gson gson = new Gson();

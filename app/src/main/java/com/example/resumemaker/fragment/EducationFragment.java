@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,12 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.resumemaker.CreateResumeDataActivity;
 import com.example.resumemaker.Model.EducationModel;
 import com.example.resumemaker.Model.WorkModel;
@@ -26,6 +33,9 @@ import com.example.resumemaker.databinding.FragmentEducationBinding;
 import com.example.resumemaker.databinding.FragmentWorkBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.text.ParseException;
@@ -52,6 +62,89 @@ public class EducationFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentEducationBinding.inflate(inflater,container,false);
+        if (MyResumeFragment.editResume == true){
+            //    Edit API Calling
+            SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+            String emailOfUser = sh1.getString("email","");
+            String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
+            RequestQueue queue = Volley.newRequestQueue(getActivity());
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    JSONArray jsonArray = response;
+                    try {
+                        for(int i=0;i<jsonArray.length();i++)
+                        {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String edu0 = jsonObject.getString("edu_0");
+                            String edu1 = jsonObject.getString("edu_1");
+                            String edu2 = jsonObject.getString("edu_2");
+                            if(!edu0.equals("")){
+                                try{
+                                    JSONObject objEdu0 = new JSONObject(edu0);
+                                    binding.EduCard0.setVisibility(View.VISIBLE);
+                                    count++;
+                                    binding.edCourseName0.setText(objEdu0.getString("courseName"));
+                                    binding.edSclName0.setText(objEdu0.getString("sclName"));
+                                    binding.edGrade0.setText(objEdu0.getString("grade"));
+                                    binding.edStartDate0.setText(objEdu0.getString("startDate"));
+                                    binding.edEndDate0.setText(objEdu0.getString("endDate"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed edu0: \"" + edu0 + "\"");
+                                }
+                            }else{
+                                binding.EduCard0.setVisibility(View.GONE);
+                            }
+                            if(!edu1.equals("")){
+                                try{
+                                    JSONObject objEdu1 = new JSONObject(edu1);
+                                    binding.EduCard1.setVisibility(View.VISIBLE);
+                                    count++;
+                                    binding.edCourseName1.setText(objEdu1.getString("courseName"));
+                                    binding.edSclName1.setText(objEdu1.getString("sclName"));
+                                    binding.edGrade1.setText(objEdu1.getString("grade"));
+                                    binding.edStartDate1.setText(objEdu1.getString("startDate"));
+                                    binding.edEndDate1.setText(objEdu1.getString("endDate"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed edu1: \"" + edu1 + "\"");
+                                }
+                            }else{
+                                binding.EduCard1.setVisibility(View.GONE);
+                            }
+                            if(!edu2.equals("")){
+                                try {
+                                    JSONObject objEdu2 = new JSONObject(edu2);
+                                    binding.EduCard2.setVisibility(View.VISIBLE);
+                                    count++;
+                                    binding.edCourseName2.setText(objEdu2.getString("courseName"));
+                                    binding.edSclName2.setText(objEdu2.getString("sclName"));
+                                    binding.edGrade2.setText(objEdu2.getString("grade"));
+                                    binding.edStartDate2.setText(objEdu2.getString("startDate"));
+                                    binding.edEndDate2.setText(objEdu2.getString("endDate"));
+                                }catch (Throwable t){
+                                    Log.e("My App", "Could not parse malformed edu2: \"" + edu2 + "\"");
+                                }
+                            }else{
+                                binding.EduCard2.setVisibility(View.GONE);
+                            }
+                        }
+                    }
+                    catch (Exception w)
+                    {
+                        w.printStackTrace();
+//                    Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorAPI",error.getMessage());
+                }
+            });
+            queue.add(jsonArrayRequest);
+        }
+
+
 
         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =sh.edit();

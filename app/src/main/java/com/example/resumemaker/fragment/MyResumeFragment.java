@@ -47,6 +47,7 @@ public class MyResumeFragment extends Fragment {
     FragmentMyResumeBinding binding;
     String[] permissionArrays = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
     int REQUEST_CODE = 101;
+    public static boolean editResume = false;
 
 
     @Override
@@ -136,6 +137,7 @@ public class MyResumeFragment extends Fragment {
         binding.btnEditResume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editResume = true;
                 Intent intent = new Intent(getActivity(), CreateResumeDataActivity.class);
                 startActivity(intent);
                 getActivity().finish();

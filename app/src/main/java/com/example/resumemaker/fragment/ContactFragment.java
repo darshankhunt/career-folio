@@ -55,44 +55,46 @@ public class ContactFragment extends Fragment {
         edCountry = view.findViewById(R.id.edCountry);
         edMoNo = view.findViewById(R.id.edMoNo);
 
-//        API Calling
-        SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
-        String emailOfUser = sh1.getString("email","");
-        String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONArray jsonArray = response;
-                try {
-                    for(int i=0;i<jsonArray.length();i++)
-                    {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        String email = jsonObject.getString("email");
-                        String contact_number = jsonObject.getString("contact_number");
-                        String address = jsonObject.getString("address");
-                        String website = jsonObject.getString("website");
-                        edEmail.setText(email);
-                        edMoNo.setText(contact_number);
-                        edCountry.setText(address);
-                        if(!website.equals("")){
-                            edWebsite.setText(website);
+        if (MyResumeFragment.editResume == true) {
+            //        API Calling
+            SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+            String emailOfUser = sh1.getString("email","");
+            String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
+            RequestQueue queue = Volley.newRequestQueue(getActivity());
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    JSONArray jsonArray = response;
+                    try {
+                        for(int i=0;i<jsonArray.length();i++)
+                        {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String email = jsonObject.getString("email");
+                            String contact_number = jsonObject.getString("contact_number");
+                            String address = jsonObject.getString("address");
+                            String website = jsonObject.getString("website");
+                            edEmail.setText(email);
+                            edMoNo.setText(contact_number);
+                            edCountry.setText(address);
+                            if(!website.equals("")){
+                                edWebsite.setText(website);
+                            }
                         }
                     }
+                    catch (Exception w)
+                    {
+                        w.printStackTrace();
+                        Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
+                    }
                 }
-                catch (Exception w)
-                {
-                    w.printStackTrace();
-                    Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorAPI",error.getMessage());
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("ErrorAPI",error.getMessage());
-            }
-        });
-        queue.add(jsonArrayRequest);
+            });
+            queue.add(jsonArrayRequest);
+        }
 
 
 

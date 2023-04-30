@@ -49,39 +49,42 @@ public class AboutFragment extends Fragment {
         edLname = view.findViewById(R.id.edLastName);
         edProfession = view.findViewById(R.id.edProfession);
 
-        SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
-        String emailOfUser = sh1.getString("email","");
-        String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONArray jsonArray = response;
-                try {
-                    for(int i=0;i<jsonArray.length();i++)
+        if(MyResumeFragment.editResume==true){
+            //        Edit API Calling
+            SharedPreferences sh1 = getActivity().getSharedPreferences("UserSignUpData", getContext().MODE_PRIVATE);
+            String emailOfUser = sh1.getString("email","");
+            String url = "http://172.20.10.5/resumepdfapi/fetchAllResumeDetailsGet.php?emailOfUser="+emailOfUser;
+            RequestQueue queue = Volley.newRequestQueue(getActivity());
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    JSONArray jsonArray = response;
+                    try {
+                        for(int i=0;i<jsonArray.length();i++)
+                        {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String firstName = jsonObject.getString("first_name");
+                            String last_name = jsonObject.getString("last_name");
+                            String profession = jsonObject.getString("profession");
+                            edFname.setText(firstName);
+                            edLname.setText(last_name);
+                            edProfession.setText(profession);
+                        }
+                    }
+                    catch (Exception w)
                     {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        String firstName = jsonObject.getString("first_name");
-                        String last_name = jsonObject.getString("last_name");
-                        String profession = jsonObject.getString("profession");
-                        edFname.setText(firstName);
-                        edLname.setText(last_name);
-                        edProfession.setText(profession);
+                        w.printStackTrace();
+                        Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 }
-                catch (Exception w)
-                {
-                    w.printStackTrace();
-                    Toast.makeText(getContext(),w.getMessage(),Toast.LENGTH_LONG).show();
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorAPI",error.getMessage());
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("ErrorAPI",error.getMessage());
-            }
-        });
-        queue.add(jsonArrayRequest);
+            });
+            queue.add(jsonArrayRequest);
+        }
 
 
         SharedPreferences sh = getActivity().getSharedPreferences("ResumeData", Context.MODE_PRIVATE);
